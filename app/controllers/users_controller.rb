@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if !user_signed_in?
+      redirect_to '/users/sign_in'
+    end
   end
 
   def index
