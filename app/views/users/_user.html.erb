@@ -1,0 +1,11 @@
+<li>
+  <%= form_tag user_path(user) do %>
+    <div id="user">
+      <%= hidden_field_tag(:user_id, user.id) %>
+      <%= button_tag("#{user.first_name} #{user.last_name}") %>
+    </div>
+    <% if !@friends.nil? && !@friends.include?(user) %>
+      <%= link_to "add", friendships_add_path(user) %>
+    <% end %>
+  <% end %>
+</li>

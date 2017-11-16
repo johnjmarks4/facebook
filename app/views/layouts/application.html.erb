@@ -9,6 +9,7 @@
   </head>
 
   <body>
+
     <div id="container">
       <div id="navbar">
         <% if user_signed_in? %>
@@ -17,6 +18,14 @@
         <% else %>
           <%# link_to "Sign up", sign_up_path %> or <%= link_to "Sign in", new_user_session_path %>
         <% end %>
+
+        <div id="searchbar">
+          <%= form_tag "/users/index" do %>
+            <%= text_field_tag :name %>
+            <%= submit_tag "Submit" %>
+          <% end %>
+        </div>
+
       </div>
     </div>
     <%= yield %>
