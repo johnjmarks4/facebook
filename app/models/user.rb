@@ -18,11 +18,11 @@ class User < ApplicationRecord
     User.where(['first_name = ? AND last_name = ?', first_name, last_name]).all
   end
 
-  def self.users_friends(user)
+  def self.users_friends(user) #fix
     friends = []
     user.friendships.each do |friendship|
       friends << friendship.friend_id
     end
-    friend
+    friends
   end
 end

@@ -19,13 +19,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.users_matching_name(params[:name])
-    puts "ran1"
-    puts user_session
-    puts user_signed_in?
+    puts @users.inspect
     if user_signed_in?
-      puts "ran2"
-      @friends = User.users_friends(current_user)
-      puts @friends.inspect
+      @friends = current_user.friends
     end
   end
 

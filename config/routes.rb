@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :users, :except => [:new, :create, :index]
 
-  post "users/:id" => "users#show"
+  #post "users/:id" => "users#show"
 
   devise_for :models
 
