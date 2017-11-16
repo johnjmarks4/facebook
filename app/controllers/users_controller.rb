@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.create(user_params)
   end
 
   def show
@@ -19,7 +20,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.users_matching_name(params[:name])
-    puts @users.inspect
     if user_signed_in?
       @friends = current_user.friends
     end
@@ -32,5 +32,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 end

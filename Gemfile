@@ -8,6 +8,7 @@ end
 gem 'bcrypt', platforms: :ruby
 gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 gem 'devise'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
