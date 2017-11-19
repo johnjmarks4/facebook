@@ -19,9 +19,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.users_matching_name(params[:name])
-    if user_signed_in?
-      @friends = current_user.friends
+    if !params[:name].nil?
+      @users = User.users_matching_name(params[:name])
+      if user_signed_in?
+        @friends = current_user.friends
+      end
+    else
+      redirect_to users_sign_in_path
     end
   end
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_scope :user do
+  as :user do
 
     resources :users, :only => [:new, :create, :index]
 
@@ -15,9 +15,13 @@ Rails.application.routes.draw do
     get "/users/sign_up" => "users/registrations#new"
 
     post "/users/sign_up" => "devise/registrations#new"
+
+    root "users/sessions#create"
   end
 
   get "friendships/add"
+
+  post "friendships/add"
 
   get "friendships/create"
 
