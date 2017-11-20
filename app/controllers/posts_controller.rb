@@ -18,6 +18,14 @@ class PostsController < ApplicationController
   def update
   end
 
+  def like
+    like = Like.new(post_id: params[:post_id], user_id: params[:user_id])
+    like.assign_post_id_from_controller(params[:post_id])
+    like.save
+
+    redirect_to user_path(current_user.id)
+  end
+
   def delete
   end
 

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   get 'posts/comment'
 
+  get 'posts/like'
+
+  post 'posts/like'
+
   as :user do
 
     resources :users, :only => [:new, :create, :index]
