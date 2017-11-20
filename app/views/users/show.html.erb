@@ -1,0 +1,9 @@
+<%= form_for(@post) do |f| %>
+  <%= f.hidden_field :user_id, value: @id %>
+  <%= f.text_area :text %>
+  <%= f.submit "Submit" %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= post.text %><br>
+<% end %>

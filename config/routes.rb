@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :posts
+
+  get 'posts/comment'
+
   as :user do
 
     resources :users, :only => [:new, :create, :index]
