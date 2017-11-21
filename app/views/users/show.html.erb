@@ -1,7 +1,12 @@
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user_name %>
+</h1>
+
 <div id="post_field">
   <%= form_for @post, url: posts_create_path do |f| %>
-    <%= f.hidden_field :user_id, value: @id %>
-    <%= f.hidden_field :poster_name, value: @user %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.hidden_field :poster_name, value: @user_name %>
     <%= f.hidden_field :likes, value: 0 %>
     <%= f.text_area :text %>
     <%= f.submit "Submit" %>
@@ -15,13 +20,13 @@
     <%= post.likes %><br>
     <%= form_for @post, url: posts_create_path do |f| %>
       <%= f.text_area :text %>
-      <%= f.hidden_field :user_id, value: @id %>
-      <%= f.hidden_field :poster_name, value: @user %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :poster_name, value: @user_name %>
       <%= f.hidden_field :parent_id, value: post.id %>
       <%= f.submit "Comment" %>
     <% end %>
     <%= form_tag posts_like_path do %>
-      <%= hidden_field_tag :user_id, @id %>
+      <%= hidden_field_tag :user_id, @user.id %>
       <%= hidden_field_tag :post_id, post.id %>
       <%= submit_tag "Like" %>
     <% end %>
