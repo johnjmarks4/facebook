@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  get 'posts/comment'
+  get 'posts/comment' => 'posts#comment'
+
+  post 'posts/comment' => "posts#comment"
 
   get 'posts/like'
 

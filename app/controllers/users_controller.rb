@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     #flash message saying you have to be logged in to see profile
     @like = Like.new
     @post = Post.new
+    @comment = Post.new
     @posts = Post.users_posts(current_user)
     @id = current_user.id
     if !user_signed_in?

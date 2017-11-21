@@ -10,6 +10,12 @@
   <% @posts.each do |post| %>
     <%= post.text %><br>
     <%= post.likes %><br>
+    <%= form_for @post do |f| %>
+      <%= f.text_area :text %>
+      <%= f.hidden_field :user_id, value: @id %>
+      <%= f.hidden_field :parent_id, value: post.id %>
+      <%= f.submit "Comment" %>
+    <% end %>
     <%= form_tag posts_like_path do %>
       <%= hidden_field_tag :user_id, value: @id %>
       <%= hidden_field_tag :post_id, value: post.id %>

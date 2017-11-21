@@ -29,12 +29,9 @@ class PostsController < ApplicationController
   def delete
   end
 
-  def comment
-  end
-
   private
 
     def post_params
-      params.require(:post).permit(:text, :user_id)
+      params.require(:post).permit(:text, :user_id, :parent_id)
     end
 end
