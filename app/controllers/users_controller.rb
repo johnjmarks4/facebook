@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = "#{current_user.first_name} #{current_user.last_name}"
     @like = Like.new
     @post = Post.new
-    @posts = Post.users_posts(current_user)
+    @posts = Post.users_posts(current_user.id)
     if !user_signed_in?
       #redirect_to '/users/sign_in'
     end

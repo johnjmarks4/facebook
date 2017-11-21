@@ -13,6 +13,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    @users_posts = Post.users_posts(current_user.id)
+    @friends_posts = Post.friends_posts(current_user.id)
+  end
+
+  def show
+  end
+
   def edit
   end
 
@@ -20,8 +28,6 @@ class PostsController < ApplicationController
   end
 
   def like
-    puts "ran"
-    puts params[:post_id]
     like = Like.new(post_id: params[:post_id], user_id: params[:user_id])
     like.assign_post_id_from_controller(params[:post_id])
     like.save

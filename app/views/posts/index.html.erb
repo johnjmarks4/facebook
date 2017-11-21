@@ -1,0 +1,9 @@
+<% @users_posts.each do |post| %>
+  <%= post.poster_name %> wrote: <br>
+  <%= post.text %><br>
+<% end %>
+
+<% @friends_posts.each do |post| %>
+  <%= post.poster_name %> wrote: <br>
+  <%= post.text %><br>
+<% end %>

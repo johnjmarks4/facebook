@@ -1,10 +1,26 @@
 Rails.application.routes.draw do
 
-  resources :posts
+  #resources :posts
 
   get 'posts/comment' => 'posts#comment'
 
   post 'posts/comment' => "posts#comment"
+
+  get 'user/timeline', to: 'posts#index', as: :timeline
+
+  get 'posts/create' => "posts#create"
+
+  post 'posts/create' => "posts#create"
+
+  get 'posts/new'
+
+  get 'posts/edit'
+
+  get 'posts/show'
+
+  post 'posts/show'
+
+  get 'posts/update'
 
   get 'posts/like'
 

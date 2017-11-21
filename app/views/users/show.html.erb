@@ -1,5 +1,5 @@
 <div id="post_field">
-  <%= form_for(@post) do |f| %>
+  <%= form_for @post, url: posts_create_path do |f| %>
     <%= f.hidden_field :user_id, value: @id %>
     <%= f.hidden_field :poster_name, value: @user %>
     <%= f.hidden_field :likes, value: 0 %>
@@ -13,7 +13,7 @@
     <%= post.poster_name %> wrote:<br>
     <%= post.text %><br>
     <%= post.likes %><br>
-    <%= form_for @post do |f| %>
+    <%= form_for @post, url: posts_create_path do |f| %>
       <%= f.text_area :text %>
       <%= f.hidden_field :user_id, value: @id %>
       <%= f.hidden_field :poster_name, value: @user %>
