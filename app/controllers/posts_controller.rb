@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
@@ -19,6 +20,8 @@ class PostsController < ApplicationController
   end
 
   def like
+    puts "ran"
+    puts params[:post_id]
     like = Like.new(post_id: params[:post_id], user_id: params[:user_id])
     like.assign_post_id_from_controller(params[:post_id])
     like.save
@@ -32,6 +35,6 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:text, :user_id, :parent_id)
+      params.require(:post).permit(:text, :user_id, :parent_id, :poster_name, :likes)
     end
 end

@@ -13,11 +13,11 @@ class UsersController < ApplicationController
 
   def show
     #flash message saying you have to be logged in to see profile
+    @id = current_user.id
+    @user = "#{current_user.first_name} #{current_user.last_name}"
     @like = Like.new
     @post = Post.new
-    @comment = Post.new
     @posts = Post.users_posts(current_user)
-    @id = current_user.id
     if !user_signed_in?
       #redirect_to '/users/sign_in'
     end
