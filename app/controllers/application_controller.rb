@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :refresh_notifications
 
   def after_sign_in_path_for(resource_or_scope)
-    current_user
+    session[:user_id] = resource_or_scope.id
+    users_index_path #replace with users show path
   end
 
   def refresh_notifications

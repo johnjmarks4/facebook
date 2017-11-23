@@ -1,7 +1,7 @@
 #require 'devise'
 
 class UsersController < ApplicationController
-  #before_action :authenticate_user!, only: :index
+  before_action :authenticate_user!, only: :index
   skip_before_action :refresh_notifications, :only => [:new, :create]
 
   def new

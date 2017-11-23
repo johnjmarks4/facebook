@@ -19,3 +19,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 end
+
+#signed_in_root_path
+#stored_location_for
