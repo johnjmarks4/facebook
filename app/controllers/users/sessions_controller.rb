@@ -10,6 +10,9 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to root_url
   end
 
   # DELETE /resource/sign_out

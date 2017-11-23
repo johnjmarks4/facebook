@@ -42,6 +42,16 @@ Rails.application.routes.draw do
 
     post "/users/sign_up" => "devise/registrations#new"
 
+    get '/users/auth/:provider', to: 'users/sessions#create'
+
+    get '/users/auth/facebook/callback', to: 'users/omniauth_callbacks#facebook'
+
+    get 'auth/failure', to: redirect('/')
+
+    get 'signout', to: 'users/sessions#destroy', as: 'signout'
+
+    #delete 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
+
     root "users/sessions#create"
   end
 
@@ -57,5 +67,5 @@ Rails.application.routes.draw do
 
   devise_for :models
 
-  devise_for :users, :controllers => { registrations: "registrations", sessions: "sessions" }
+  devise_for :users, :controllers => { registrations: "registrations", sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }
 end

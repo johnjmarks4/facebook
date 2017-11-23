@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
     session[:notifications][:friend_requests] = FriendRequest.refresh_friend_requests(current_user)
     @notifications = session[:notifications]
   end
+
+  private
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+    helper_method :current_user
 end
