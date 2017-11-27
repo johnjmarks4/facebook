@@ -1,15 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  post: 
-  friend: 
-  wall_post: 
-  picture: 
-  comment: 
-
-two:
-  post: 
-  friend: 
-  wall_post: 
-  picture: 
-  comment: 
+  first_name: John
+  last_name: Marks
+  email: "johnjmarks4@gmail.com"

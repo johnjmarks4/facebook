@@ -19,6 +19,11 @@ class User < ApplicationRecord
     User.where(['first_name = ? AND last_name = ?', first_name, last_name]).all
   end
 
+  def self.users_name(id)
+    user = User.find(id)
+    "#{user.first_name} #{user.last_name}"
+  end
+
   def self.users_friends(user)
     friends = []
     user.friendships.each do |friendship|

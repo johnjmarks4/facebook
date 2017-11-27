@@ -8,6 +8,7 @@
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.hidden_field :poster_name, value: @user_name %>
     <%= f.hidden_field :likes, value: 0 %>
+    <%= f.label "Comment:" %> <br>
     <%= f.text_area :text %>
     <%= f.submit "Submit" %>
   <% end %>

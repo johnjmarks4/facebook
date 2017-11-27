@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20171122175149) do
   create_table "friend_requests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
+    t.string "user_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_name"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -68,11 +68,9 @@ ActiveRecord::Schema.define(version: 20171122175149) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "user_id"
-    t.bigint "wall_post_id"
-    t.bigint "picture_id"
-    t.bigint "comment_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -85,19 +83,13 @@ ActiveRecord::Schema.define(version: 20171122175149) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "first_name"
-    t.string "last_name"
     t.string "provider"
     t.string "uid"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
-    t.index ["comment_id"], name: "index_users_on_comment_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["picture_id"], name: "index_users_on_picture_id"
-    t.index ["post_id"], name: "index_users_on_post_id"
+    t.index ["friend_id"], name: "index_users_on_friend_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_users_on_user_id"
-    t.index ["wall_post_id"], name: "index_users_on_wall_post_id"
   end
 
   add_foreign_key "likes", "posts"

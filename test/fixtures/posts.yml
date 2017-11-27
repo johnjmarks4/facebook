@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyString
-
-two:
-  text: MyString
+  id: 27
+  text: This is a post!
+  poster_name: John Marks
+  user_id: 41

@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+  
   def add
     FriendRequest.create(user_id: current_user.id, 
                          friend_id: params[:friend_id],

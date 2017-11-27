@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'e45b23a6a66b18adbea39dca7900d1900179ab3a1b30b1c7e21c7edebeee29fd09a182ab299803216a5e1d068f7e7bedd72d18201aa66ed156e84f478665bb07'
+  # config.secret_key = 'f670636c6a5ec041df7ac755b24ffd6cd6bbd8f2d9cd9ffb402bee69dc5e432d9190b4ed182e37cb6c00f48670c706d55b34c75841a60d1d6d1ee45f9dbb1fb3'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -108,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '94f4bf9ec0f9671e4f94961d1e0164dc1fd512bc308ccce92985e5c4b8782d5029a1087a19985c7acc725161c5b3eb4c8ffe4aac21cf076a2a6ffa6914f95da7'
+  # config.pepper = 'ae32822116311a90cffab3bb5c0af9500f468e07bf3fab548445480a23e54e1bd27bc4b45b746d9c4b47ea1ae3a6b35b77e8fae29fa9fd4cd7022bef8989f36a'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -274,5 +274,5 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET']
+  config.omniauth :facebook, 'FACEBOOK_APP_ID', 'FACEBOOK_SECRET'
 end

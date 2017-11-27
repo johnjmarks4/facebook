@@ -1,7 +1,8 @@
 class AddOmniauthToUser < ActiveRecord::Migration[5.1]
   def change
-    remove_column :users, :provider
-    remove_column :users, :uid
+    # Run these commands if environment is not test
+    # remove_column :users, :provider
+    # remove_column :users, :uid
 
     add_column :users, :provider, :string
     add_column :users, :uid, :string
