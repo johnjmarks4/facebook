@@ -1,13 +1,12 @@
 require 'test_helper'
 
 class LikeTest < ActiveSupport::TestCase
+
+  def setup
+    @one = likes :one
+  end
   
   test "should be valid" do 
-  end
-
-  test "like id should be present" do
-  end
-
-  test "belongs to user" do
+    #assert @one.valid?
   end
 end
