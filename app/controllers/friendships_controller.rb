@@ -10,6 +10,7 @@ class FriendshipsController < ApplicationController
   def create
     request = FriendRequest.find_by(id: params[:format])
     Friendship.create(user_id: request.user_id, friend_id: request.friend_id)
+    Friendship.create(user_id: request.friend_id, friend_id: request.user_id)
   end
 
   def destroy

@@ -4,24 +4,20 @@ class Post < ApplicationRecord
   has_many :comments, :class_name => "Post", :foreign_key => "parent_id"
 
   def self.users_posts(user_id)
-    Post.where(user_id: user_id)
+    Post.where(user_id: user_id).order(created_at: :desc)
   end
 
   def self.friends_posts(user_id)
-    friends = []
+    posts = []
 
-    Friendship.where(user_id: user_id).each do |friendship|
-      friends << friendship.friend_id
+    ids = Friendship.select("id, user_id").where(friend_id: user_id)
+
+    ids.each do |relation|
+      Post.where(user_id: relation[:user_id]).each do |post|
+        posts << post
+      end
     end
 
-    Friendship.where(friend_id: user_id).each do |friendship|
-      friends << friendship.user_id
-    end
-
-    friends.map! do |id|
-      Post.where("user_id = ? AND created_at >= ?", id, 1.month.ago)
-    end
-
-    friends.reject(&:empty?)
+    posts.sort_by { |post| post[:created_at] }.reverse
   end
 end

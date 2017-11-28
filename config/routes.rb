@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   post 'posts/comment' => "posts#comment"
 
-  get 'user/timeline', to: 'posts#index', as: :timeline
+  get 'posts/index', to: 'posts#index'
 
   get 'posts/create' => "posts#create"
 
