@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
     resources :users, :only => [:new, :create, :index]
 
+    get 'users/sign_out' => 'users/sessions#destroy'
+
     get 'users/sign_in' => 'users/sessions#new'
 
     post 'users/index' => 'users#index'

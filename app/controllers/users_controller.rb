@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # add code to delete cookies
+    # add code to delete cookies?
     User.find(params[:format]).destroy
     session[:user_id] = nil
     flash[:notice] = "Your account has been deleted"
