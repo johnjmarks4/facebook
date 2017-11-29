@@ -33,7 +33,7 @@ Friendship.create(friend_id: User.last.id, user_id: User.first.id)
 
 my_friends = me.friends.take
 
-my_friends.posts.create(text: "This is a post!", created_at: "2017-11-27 18:21:14")
-my_friends.posts.create(text: "Another post!", created_at: "2002-05-24 21:15:07")
-my_friends.posts.create(text: "Third post!", created_at: "2017-11-27 18:21:13")
-my_friends.posts.create(text: "Fourth post!", created_at: "2011-01-01 06:29:00")
+#my_friends.posts.create(text: "This is a post!", created_at: "2017-11-27 18:21:14")
+#my_friends.posts.create(text: "Another post!", created_at: "2002-05-24 21:15:07")
+#my_friends.posts.create(text: "Third post!", created_at: "2017-11-27 18:21:13")
+#my_friends.posts.create(text: "Fourth post!", created_at: "2011-01-01 06:29:00")

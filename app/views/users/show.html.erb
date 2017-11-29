@@ -3,6 +3,8 @@
   <%= @user_name %>
 </h1>
 
+<%= link_to "Delete", users_destroy_path(@user) %>
+
 <div id="post_field">
   <%= form_for @post, url: posts_create_path do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>

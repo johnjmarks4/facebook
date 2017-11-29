@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   post 'posts/like'
 
+  get 'users/destroy'
+
   as :user do
 
     resources :users, :only => [:new, :create, :index]

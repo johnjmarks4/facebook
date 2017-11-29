@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         @friends = current_user.friends
       end
     else
-      redirect_to users_sign_in_path
+      redirect_to users_sign_up_path
     end
   end
 
@@ -41,6 +41,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # add code to delete cookies
+    User.find(params[:format]).destroy
+    session[:user_id] = nil
+    flash[:notice] = "Your account has been deleted"
+    redirect_to users_sign_up_path
   end
 
   def self.from_omniauth(auth)
