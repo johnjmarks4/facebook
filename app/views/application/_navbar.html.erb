@@ -14,15 +14,12 @@
       <% end %>
     </div>
 
-    <div id="notifications">
-      <% if !@notifications.nil? %>
-        <%= @notifications.each do |key, value| %>
-          <% if !value.empty? %>
-            <% value.each do |request| %>
-              <%= "Friend request from #{request.user_name}" %>
-              <%= link_to "Accept", friendships_create_path(request.id) %>
-            <% end %>
-          <% end %>
+    <div id="friend_requests">
+      <% if @friendship %>
+        <%= form_for @friendship, url: friendships_create_path do |f| %>
+          Friend requests:
+          <%= f.select(:friend_id, options_for_select(@request_options)) %>
+          <%= f.submit "Add friend" %>
         <% end %>
       <% end %>
     </div>

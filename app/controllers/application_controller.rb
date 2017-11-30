@@ -15,8 +15,14 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "Account not found"
       redirect_to users_sign_up_path
     else
+      @friendship = Friendship.new
       session[:notifications][:friend_requests] = FriendRequest.refresh_friend_requests(current_user)
-      @notifications = session[:notifications]
+      @request_options = []
+      session[:notifications][:friend_requests].each do |request|
+        user = User.find(request.user_id)
+        name = user.first_name + " " + user.last_name
+        @request_options << [name, request.user_id]
+      end
     end
   end
 

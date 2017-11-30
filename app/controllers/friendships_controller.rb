@@ -8,11 +8,24 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    request = FriendRequest.find_by(id: params[:format])
-    Friendship.create(user_id: request.user_id, friend_id: request.friend_id)
-    Friendship.create(user_id: request.friend_id, friend_id: request.user_id)
+    friendship_params
+    one = Friendship.new(user_id: current_user.id, friend_id: params[:friendship][:friend_id])
+    two = Friendship.new(user_id: params[:friendship][:friend_id], friend_id: current_user.id)
+
+    if one.save && two.save
+      request = FriendRequest.find_by(user_id: params["friendship"]["friend_id"], friend_id: current_user.id)
+      if request
+        request.destroy
+      end
+    end
   end
 
   def destroy
+  end
+
+  private
+
+  def friendship_params
+    params.require(:friendship).permit(:friend_id)
   end
 end
