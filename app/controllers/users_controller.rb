@@ -7,7 +7,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        # Tell the UsersMailer to send a welcome email after save
+        UsersMailer.welcome_email(@user).deliver_now!
+ 
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render json: @user, status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show

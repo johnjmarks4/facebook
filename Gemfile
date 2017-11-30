@@ -15,6 +15,7 @@ gem 'omniauth-facebook', '~> 4.0'
 gem 'devise'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem 'figaro'
+gem "letter_opener", :group => :development
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
