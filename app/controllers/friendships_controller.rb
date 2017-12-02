@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
     two = Friendship.new(user_id: params[:friendship][:friend_id], friend_id: current_user.id)
 
     if one.save && two.save
-      request = FriendRequest.find_by(user_id: params["friendship"]["friend_id"], friend_id: current_user.id)
+      request = FriendRequest.find_by(user_id: params[:friendship][:friend_id], friend_id: current_user.id)
       if request
         request.destroy
       end
