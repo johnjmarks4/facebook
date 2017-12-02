@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: :index
-  skip_before_action :refresh_notifications, :only => [:new, :create]
+  skip_before_action :refresh_notifications, only: [:new, :create]
 
   def new
     @user = User.new
@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    #flash message saying you have to be logged in to see profile
     @id = current_user.id
     @user = current_user
     @user_name = "#{current_user.first_name} #{current_user.last_name}"
@@ -37,13 +36,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    if !params[:name].nil?
+    if params[:name]
+      @friends = current_user.friends
       @users = User.users_matching_name(params[:name])
-      if user_signed_in?
-        @friends = current_user.friends
-      end
-    else
-      redirect_to users_sign_up_path
     end
   end
 
@@ -73,7 +68,7 @@ class UsersController < ApplicationController
   
   private
 
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
 end

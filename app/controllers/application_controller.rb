@@ -11,10 +11,7 @@ class ApplicationController < ActionController::Base
   def refresh_notifications
     session[:notifications] = { }
 
-    if current_user.nil?
-      flash[:notice] = "Account not found"
-      redirect_to users_sign_up_path
-    else
+    if current_user
       @friendship = Friendship.new
       session[:notifications][:friend_requests] = FriendRequest.refresh_friend_requests(current_user)
       @request_options = []

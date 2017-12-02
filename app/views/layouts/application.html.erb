@@ -12,7 +12,7 @@
 
     <%= render "navbar" %>
 
-    <%= flash[:notice].html_safe if flash[:notice] %>
+    <%= flash[:alert].html_safe if flash[:alert] %>
 
     <%= yield %>
   </body>
