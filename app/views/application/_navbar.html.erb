@@ -1,20 +1,23 @@
-<div id="container">
-  <div id="navbar">
-    <% if user_signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= link_to "Sign out",  destroy_user_session_path %>
-    <% else %>
-      <%= link_to "Sign up", users_sign_up_path %> or <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
+<div id="navbar">
+
+  <div id="navbar_container_left">
+    <div id="login_options">
+      <% if user_signed_in? %>
+        Signed in as: <%= current_user.email %>
+        <%= link_to "Sign out",  destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Sign up", users_sign_up_path %> or <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <% end %>
 
     <div id="searchbar">
       <%= form_tag "/users/index" do %>
         <%= text_field_tag :name %>
-        <%= submit_tag "Submit" %>
+        <%= submit_tag "Submit", :class => "button" %>
       <% end %>
     </div>
+  </div>
 
-    <div id="friend_requests">
+    <div id="notifications">
       <% if @friendship %>
         <%= form_for @friendship, url: friendships_create_path do |f| %>
           Friend requests:
@@ -23,6 +26,5 @@
         <% end %>
       <% end %>
     </div>
-
   </div>
 </div>

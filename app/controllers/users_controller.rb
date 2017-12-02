@@ -30,9 +30,6 @@ class UsersController < ApplicationController
     @like = Like.new
     @post = Post.new
     @posts = Post.users_posts(current_user.id)
-    if !user_signed_in?
-      #redirect_to '/users/sign_in'
-    end
   end
 
   def index
