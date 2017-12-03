@@ -75,6 +75,8 @@ Rails.application.routes.draw do
 
   resources :users, :except => [:new, :create, :index]
 
+  get 'users/list' => 'users#list'
+
   devise_for :models
 
   devise_for :users, :controllers => { registrations: "registrations", sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }

@@ -17,14 +17,26 @@
     </div>
   </div>
 
-    <div id="notifications">
-      <% if @friendship %>
-        <%= form_for @friendship, url: friendships_create_path do |f| %>
-          Friend requests:
-          <%= f.select(:friend_id, options_for_select(@request_options)) %>
-          <%= f.submit "Add friend" %>
-        <% end %>
-      <% end %>
-    </div>
+  <div id="list">
+    <%= link_to "All users", users_list_path %>
   </div>
+
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+    <ul>
+    <% @notifications.each do |note| %>
+      <li>
+        <%= note[0] %>
+        <% if note[1] %>
+          <%= form_for @friendship, url: friendships_create_path do |f| %>
+            <%= f.hidden_field :friend_id, :value => note[1] %>
+            <%= f.submit "Accept" %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+    </div>
+  </div> 
 </div>

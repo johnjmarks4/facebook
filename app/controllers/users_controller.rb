@@ -41,6 +41,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def list
+  end
+
   def edit
   end
 
