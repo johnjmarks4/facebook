@@ -1,3 +1,30 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#user_profile {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  padding: 400px;
+  transform: translate(-60%, -50%);
+}
+
+.gravatar {
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  bottom: 50%;
+}
+
+#display_name {
+  position: absolute;
+  top: 50%;
+  font-size: 49px;
+}
+
+#post_field {
+  position: absolute;
+  top: 60%;
+}
+
+#delete_link {
+  position: absolute;
+  top: 57%;
+}

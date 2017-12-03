@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    # change so it doesn't redirect from sign-in 
+    # Actually just make it so that it automatically signs in upon sign-up
     @id = current_user.id
     @user = current_user
     @user_name = "#{current_user.first_name} #{current_user.last_name}"

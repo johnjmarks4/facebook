@@ -1,37 +1,43 @@
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user_name %>
-</h1>
+<div id="user_profile">
+  <h1>
+    <%= gravatar_for @user %>
+    <div id="display_name">
+      <%= @user_name %>
+    </div>
+  </h1>
 
-<%= link_to "Delete", users_destroy_path(@user) %>
+  <div id="delete_link">
+    <%= link_to "Delete", users_destroy_path(@user) %>
+  </div>
 
-<div id="post_field">
-  <%= form_for @post, url: posts_create_path do |f| %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.hidden_field :poster_name, value: @user_name %>
-    <%= f.hidden_field :likes, value: 0 %>
-    <%= f.label "Comment:" %> <br>
-    <%= f.text_area :text %>
-    <%= f.submit "Submit" %>
-  <% end %>
-</div>
-
-<div id="post">
-  <% @posts.each do |post| %>
-    <%= post.poster_name %> wrote:<br>
-    <%= post.text %><br>
-    <%= post.likes %><br>
+  <div id="post_field">
     <%= form_for @post, url: posts_create_path do |f| %>
-      <%= f.text_area :text %>
       <%= f.hidden_field :user_id, value: @user.id %>
       <%= f.hidden_field :poster_name, value: @user_name %>
-      <%= f.hidden_field :parent_id, value: post.id %>
-      <%= f.submit "Comment" %>
+      <%= f.hidden_field :likes, value: 0 %>
+      <%= f.label "Comment:" %> <br>
+      <%= f.text_area :text %>
+      <%= f.submit "Submit" %>
     <% end %>
-    <%= form_tag posts_like_path do %>
-      <%= hidden_field_tag :user_id, @user.id %>
-      <%= hidden_field_tag :post_id, post.id %>
-      <%= submit_tag "Like" %>
+  </div>
+
+  <div id="post">
+    <% @posts.each do |post| %>
+      <%= post.poster_name %> wrote:<br>
+      <%= post.text %><br>
+      <%= post.likes %><br>
+      <%= form_for @post, url: posts_create_path do |f| %>
+        <%= f.text_area :text %>
+        <%= f.hidden_field :user_id, value: @user.id %>
+        <%= f.hidden_field :poster_name, value: @user_name %>
+        <%= f.hidden_field :parent_id, value: post.id %>
+        <%= f.submit "Comment" %>
+      <% end %>
+      <%= form_tag posts_like_path do %>
+        <%= hidden_field_tag :user_id, @user.id %>
+        <%= hidden_field_tag :post_id, post.id %>
+        <%= submit_tag "Like" %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
