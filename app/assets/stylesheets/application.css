@@ -23,6 +23,16 @@ body {
   color: white;
 }
 
+#navbar_container_right {
+  display: block;
+  position: absolute;
+  left: 87%;
+  top: 2%;
+  margin: auto;
+  padding: 10px;
+  color: white;
+}
+
 .button {
   background-color: #4267b2;
   color: white;
@@ -44,42 +54,46 @@ body {
 
  /* Dropdown Button */
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+  background-color: #3b5998;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+.dropbtn:hover > div {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.3;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    position: relative;
-    left: 80%;
-    display: inline-block;
+  position: relative;
+  left: 80%;
+  display: inline-block;
+}
+
+.dropdown img {
+  width: 75px;
+  height: auto;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 /* Change color of dropdown links on hover */

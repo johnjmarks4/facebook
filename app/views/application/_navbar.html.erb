@@ -9,34 +9,37 @@
         <%= link_to "Sign up", users_sign_up_path %> or <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
       <% end %>
 
-    <div id="searchbar">
-      <%= form_tag "/users/index" do %>
-        <%= text_field_tag :name %>
-        <%= submit_tag "Submit", :class => "button" %>
-      <% end %>
-    </div>
-  </div>
-
-  <div id="list">
-    <%= link_to "All users", users_list_path %>
-  </div>
-
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-    <div id="myDropdown" class="dropdown-content">
-    <ul>
-    <% @notifications.each do |note| %>
-      <li>
-        <%= note[0] %>
-        <% if note[1] %>
-          <%= form_for @friendship, url: friendships_create_path do |f| %>
-            <%= f.hidden_field :friend_id, :value => note[1] %>
-            <%= f.submit "Accept" %>
-          <% end %>
+      <div id="searchbar">
+        <%= form_tag "/users/index" do %>
+          <%= text_field_tag :name %>
+          <%= submit_tag "Submit", :class => "button" %>
         <% end %>
-      </li>
-    <% end %>
-    </ul>
+      </div>
     </div>
-  </div> 
+
+    <div id="list">
+      <%= link_to "All users", users_list_path %>
+    </div>
+  </div>
+
+  <div id="navbar_container_right">
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
+      <div id="myDropdown" class="dropdown-content">
+      <ul>
+      <% @notifications.each do |note| %>
+        <li>
+          <%= note[0] %>
+          <% if note[1] %>
+            <%= form_for @friendship, url: friendships_create_path do |f| %>
+              <%= f.hidden_field :friend_id, :value => note[1] %>
+              <%= f.submit "Accept" %>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+      </div>
+    </div> 
+  </div>
 </div>
