@@ -61,6 +61,8 @@ Rails.application.routes.draw do
     root 'users/sessions#create'
   end
 
+  get 'users/edit'
+
   get 'friendships/add'
 
   post 'friendships/add'

@@ -8,6 +8,7 @@
       <% else %>
         <%= link_to "Sign up", users_sign_up_path %> or <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
       <% end %>
+    </div>
 
       <div id="searchbar">
         <%= form_tag "/users/index" do %>
@@ -15,18 +16,18 @@
           <%= submit_tag "Submit", :class => "button" %>
         <% end %>
       </div>
-    </div>
 
     <div id="list">
       <%= link_to "All users", users_list_path %>
     </div>
   </div>
 
-  <div id="navbar_container_right">
-    <div class="dropdown">
-      <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
-      <div id="myDropdown" class="dropdown-content">
-      <ul>
+
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
+    <div id="myDropdown" class="dropdown-content">
+    <ul>
+    <% if @notifications %>
       <% @notifications.each do |note| %>
         <li>
           <%= note[0] %>
@@ -38,8 +39,8 @@
           <% end %>
         </li>
       <% end %>
-      </ul>
-      </div>
-    </div> 
+    <% end %>
+    </ul>
+    </div>
   </div>
 </div>

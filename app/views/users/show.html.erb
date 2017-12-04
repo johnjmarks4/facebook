@@ -1,13 +1,14 @@
 <div id="user_profile">
-  <h1>
-    <%= gravatar_for @user %>
-    <div id="display_name">
-      <%= @user_name %>
-    </div>
-  </h1>
+  <%= gravatar_for @user %>
+  <div id="display_name">
+    <%= @user_name %>
+  </div>
 
-  <div id="delete_link">
-    <%= link_to "Delete", users_destroy_path(@user) %>
+  <div id="profile_options">
+    <ul>
+      <li><%= link_to "Edit", users_edit_path(@user) %></li>
+      <li><%= link_to "Delete", users_destroy_path(@user) %></li>
+    </ul>
   </div>
 
   <div id="post_field">
