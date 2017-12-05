@@ -16,12 +16,13 @@ body {
 #navbar_container_left {
   position: absolute;
   display: block;
-  width: 50%;
+  width: 70%;
   padding: 10px;
   color: white;
 }
 
 #navbar_container_left a {
+  display: inline-block;
   color: white;
 }
 
@@ -36,12 +37,6 @@ body {
   position: absolute;
   left: 50%;
   bottom: 50%;
-}
-
-#list {
-  position: absolute;
-  left: 33%;
-  bottom: 55%;
 }
 
  /* Dropdown Button */
