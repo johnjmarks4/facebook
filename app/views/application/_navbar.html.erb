@@ -33,9 +33,10 @@
           <%= note[0] %>
           <% if note[1] %>
             <%= form_for @friendship, url: friendships_create_path do |f| %>
-              <%= f.hidden_field :friend_id, :value => note[1] %>
-              <%= f.submit "Accept" %>
+              <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
+              <div><%= f.submit "Accept", :class => "accept" %>
             <% end %>
+            <%= link_to "Delete Request", friendships_delete_request_path(note[1]), :class => "button" %></div>
           <% end %>
         </li>
       <% end %>

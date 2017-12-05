@@ -23,6 +23,9 @@ class FriendshipsController < ApplicationController
   def destroy
   end
 
+  def delete_request
+  end
+
   private
 
   def friendship_params
