@@ -27,8 +27,9 @@
     <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
     <div id="myDropdown" class="dropdown-content">
     <ul>
-    <% if @notifications %>
-      <% @notifications.each do |note| %>
+    <% if @friend_requests %>
+      <div id="headings">Friend Requests</div>
+      <% @friend_requests.each do |note| %>
         <li>
           <%= note[0] %>
           <% if note[1] %>

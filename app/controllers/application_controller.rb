@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def refresh_notifications
     session[:notifications] = { }
-    @notifications = []
+    @friend_requests = []
 
     if current_user
       @friendship = Friendship.new
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       session[:notifications][:friend_requests].each do |request|
         user = User.find(request.user_id)
         name = user.first_name + " " + user.last_name
-        @notifications << ["#{name} added you", request.user_id]
+        @friend_requests << ["#{name} added you", request.user_id]
       end
     end
   end
