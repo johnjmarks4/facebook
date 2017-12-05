@@ -24,20 +24,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    # change so it doesn't redirect from sign-in 
-    # Actually just make it so that it automatically signs in upon sign-up
-    @id = current_user.id
-    @user = current_user
-    @user_name = "#{current_user.first_name} #{current_user.last_name}"
+    @browser = current_user
+    @browser_name = "#{current_user.first_name} #{current_user.last_name}"
+    @profile_owner = User.find(params[:id])
+    @profile_owner_name = "#{@profile_owner.first_name} #{@profile_owner.last_name}"
     @like = Like.new
     @post = Post.new
-    @posts = Post.users_posts(current_user.id)
+    @posts = Post.users_posts(params[:id])
   end
 
-  def index
+  def search
     if params[:name]
       @friends = current_user.friends
       @users = User.users_matching_name(params[:name])
+      puts @users.inspect
     end
   end
 

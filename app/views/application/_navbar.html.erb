@@ -12,7 +12,7 @@
     </div>
 
     <div id="searchbar">
-      <%= form_tag "/users/index" do %>
+      <%= form_tag users_search_path do %>
         <%= text_field_tag :name %>
         <%= submit_tag "Submit", :class => "button" %>
       <% end %>

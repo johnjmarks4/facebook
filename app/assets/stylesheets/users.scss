@@ -5,35 +5,35 @@
   height: 500px;
   width: 350px;
   top: 60%;
-  left: 50%;
+  left: 20%;
   transform: translate(-60%, -50%);
 }
 
 .gravatar {
   display: block;
   position: absolute;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   padding: 30px 50px;
-  bottom: 40%;
+  bottom: 45%;
 }
 
 #display_name {
   display: block;
   position: absolute;
   text-align: center;
-  width: 350px;
-  height: 56px;
+  width: 200px;
+  height: 80px;
   margin: auto;
-  top: 70%;
-  font-size: 49px;
+  left: 7%;
+  font-size: 30px;
 }
 
 #post_field {
+  position: absolute;
   display: block;
   width: 350px;
   margin: auto;
-  position: absolute;
   top: 80%;
 }
 
@@ -41,10 +41,16 @@
   display: block;
   position: absolute;
   width: 350px;
-  margin: auto;
-  top: 60%;
+  top: 50%;
+  right: 15%;
 }
 
 #profile_options ul li {
   display: inline;
+}
+
+#wall {
+  position: absolute;
+  top: 30%;
+  left: 60%;
 }

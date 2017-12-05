@@ -63,6 +63,12 @@ Rails.application.routes.draw do
     root 'users/sessions#create'
   end
 
+  get 'users/search'
+
+  post 'users/search' => 'users#search'
+
+  post 'users/:id' => 'users#show'
+
   get 'users/edit'
 
   get 'friendships/add'
