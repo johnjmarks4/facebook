@@ -14,3 +14,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( users.css )
 
 Rails.application.config.assets.precompile += %w( notifications.js )
+
+Rails.application.config.assets.precompile += %w( comment.js )
