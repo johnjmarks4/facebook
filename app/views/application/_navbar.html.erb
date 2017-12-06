@@ -1,24 +1,21 @@
 <div id="navbar">
-
-  <div id="navbar_container_left">
-    <div id="login_options">
-      <% if user_signed_in? %>
-        Signed in as: <%= current_user.email %>
-        <%= link_to "Sign out",  destroy_user_session_path %>
-      <% else %>
-        <%= link_to "Sign up", users_sign_up_path %> or <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-      <% end %>
-      <%= link_to "All users", users_list_path %>
-    </div>
-
-    <div id="searchbar">
-      <%= form_tag users_search_path do %>
-        <%= text_field_tag :name %>
-        <%= submit_tag "Submit", :class => "button" %>
-      <% end %>
-    </div>
+    
+  <div id="searchbar">
+    <%= form_tag users_search_path do %>
+      <%= text_field_tag :name, nil, :class => "text_field" %>
+      <%= submit_tag "", :class => "button" %>
+    <% end %>
   </div>
 
+  <div id="login_options">
+    <% if user_signed_in? %>
+      Signed in as: <%= current_user.email %>
+      <%= link_to "Sign out",  destroy_user_session_path %>
+    <% else %>
+      <%= link_to "Sign up", users_sign_up_path %> or <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    <% end %>
+    <%= link_to "All users", users_list_path %>
+  </div>
 
   <div class="dropdown">
     <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
