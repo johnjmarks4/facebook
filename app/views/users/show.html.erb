@@ -31,13 +31,15 @@
   </div>
 
   <div id="wall">
-    <div id="friends_posts">
-      <% @posts.each do |post| %>
-        <%= post.poster_name %> wrote:<br>
+    <% @posts.each do |post| %>
+      <div id="friends_post">
+        <%= gravatar_for find_user_by_id(post.user_id) %>
+        <div id="poster_name">
+          <%= link_to post.poster_name, user_path(post.user_id) %>
+        </div> <br>
         <%= post.text %><br>
         <%= post.likes %><br>
         <%= form_for @post, url: posts_create_path, html: { id: "mainForm" } do |f| %>
-          <%= f.text_area :text %>
           <%= f.hidden_field :user_id, value: @browser.id %>
           <%= f.hidden_field :poster_name, value: @browser_name %>
           <%= f.hidden_field :parent_id, value: post.id %>
@@ -49,7 +51,7 @@
           <%= hidden_field_tag :post_id, post.id %>
           <%= submit_tag "Like" %>
         <% end %>
+      </div>
       <% end %>
-    </div>
   </div>
 </div>
