@@ -31,13 +31,13 @@ class UsersController < ApplicationController
     @like = Like.new
     @post = Post.new
     @posts = Post.users_posts(params[:id])
+    @numbers = [1, 2, 3, 4, 5]
   end
 
   def search
     if params[:name]
       @friends = current_user.friends
       @users = User.users_matching_name(params[:name])
-      puts @users.inspect
     end
   end
 
