@@ -43,17 +43,13 @@
             </div> <br>
             <%= post.text %><br>
             <%= post.likes %><br>
-            <%= form_for @post, url: posts_create_path, html: { id: "mainForm" } do |f| %>
-              <%= f.hidden_field :user_id, value: @browser.id %>
-              <%= f.hidden_field :poster_name, value: @browser_name %>
-              <%= f.hidden_field :parent_id, value: post.id %>
+            <div id="buttons">
               <button onclick="myComment()" id="clickme">Comment</button>
-              <input id="submitme" type="submit" />
-            <% end %>
             <%= form_tag posts_like_path do %>
               <%= hidden_field_tag :user_id, @browser.id %>
               <%= hidden_field_tag :post_id, post.id %>
-              <%= submit_tag "Like" %>
+              <%= submit_tag "Like", :id => "like" %>
+            </div>
             <% end %>
           </div>
           <% end %>
