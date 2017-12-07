@@ -1,7 +1,9 @@
-body {
+html, body { 
   margin: 0;
   font-family: Tahoma;
   background-color: #E9EBEE;
+  height: 100%;
+  width: 100%;
 }
 
 #navbar {

@@ -1,57 +1,63 @@
-<div id="user_profile">
-  <%= gravatar_for @profile_owner %>
-  <div id="display_name">
-    <%= @profile_owner_name %>
-  </div>
-
-  <div id="profile_options">
-    <% if @browser.id == @profile_owner.id %>
-      <ul>
-        <li><%= link_to "Edit", users_edit_path(@browser.id) %></li>
-        <li><%= link_to "Delete", users_destroy_path(@browser.id) %></li>
-      </ul>
-    <% end %>
-  </div>
-</div>
-
-<div id="center">
-  <div id="post_field">
-    <%= form_for @post, url: posts_create_path do |f| %>
-      <%= f.hidden_field :user_id, value: @browser.id %>
-      <%= f.hidden_field :poster_name, value: @browser_name %>
-      <%= f.hidden_field :likes, value: 0 %>
-      <div id="top_bar">
-      <%= f.label "What's on your mind?" %> <br>
+<div id="lower_screen">
+  <div id="left_wrapper">
+    <div id="user_profile">
+      <%= gravatar_for @profile_owner %>
+      <div id="display_name">
+        <%= @profile_owner_name %>
       </div>
-      <%= f.text_area :text %>
-      <div id="bottom_bar">
-      <%= f.submit "Submit", :class => "button" %>
+
+      <div id="profile_options">
+        <% if @browser.id == @profile_owner.id %>
+          <ul>
+            <li><%= link_to "Edit", users_edit_path(@browser.id) %></li>
+            <li><%= link_to "Delete", users_destroy_path(@browser.id) %></li>
+          </ul>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 
-  <div id="wall">
-    <% @posts.each do |post| %>
-      <div id="friends_post">
-        <%= gravatar_for find_user_by_id(post.user_id) %>
-        <div id="poster_name">
-          <%= link_to post.poster_name, user_path(post.user_id) %>
-        </div> <br>
-        <%= post.text %><br>
-        <%= post.likes %><br>
-        <%= form_for @post, url: posts_create_path, html: { id: "mainForm" } do |f| %>
+  <div id="center_wrapper">
+    <div id="posts_and_wall">
+      <div id="post_field">
+        <%= form_for @post, url: posts_create_path do |f| %>
           <%= f.hidden_field :user_id, value: @browser.id %>
           <%= f.hidden_field :poster_name, value: @browser_name %>
-          <%= f.hidden_field :parent_id, value: post.id %>
-          <button onclick="myComment()" id="clickme">Comment</button>
-          <input id="submitme" type="submit" />
-        <% end %>
-        <%= form_tag posts_like_path do %>
-          <%= hidden_field_tag :user_id, @browser.id %>
-          <%= hidden_field_tag :post_id, post.id %>
-          <%= submit_tag "Like" %>
+          <%= f.hidden_field :likes, value: 0 %>
+          <div id="top_bar">
+          <%= f.label "What's on your mind?" %> <br>
+          </div>
+          <%= f.text_area :text %>
+          <div id="bottom_bar">
+          <%= f.submit "Submit", :class => "button" %>
+          </div>
         <% end %>
       </div>
-      <% end %>
+
+      <div id="wall">
+        <% @posts.each do |post| %>
+          <div id="friends_post">
+            <%= gravatar_for find_user_by_id(post.user_id) %>
+            <div id="poster_name">
+              <%= link_to post.poster_name, user_path(post.user_id) %>
+            </div> <br>
+            <%= post.text %><br>
+            <%= post.likes %><br>
+            <%= form_for @post, url: posts_create_path, html: { id: "mainForm" } do |f| %>
+              <%= f.hidden_field :user_id, value: @browser.id %>
+              <%= f.hidden_field :poster_name, value: @browser_name %>
+              <%= f.hidden_field :parent_id, value: post.id %>
+              <button onclick="myComment()" id="clickme">Comment</button>
+              <input id="submitme" type="submit" />
+            <% end %>
+            <%= form_tag posts_like_path do %>
+              <%= hidden_field_tag :user_id, @browser.id %>
+              <%= hidden_field_tag :post_id, post.id %>
+              <%= submit_tag "Like" %>
+            <% end %>
+          </div>
+          <% end %>
+      </div>
+    </div>
   </div>
 </div>
