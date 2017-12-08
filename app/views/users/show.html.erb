@@ -61,7 +61,11 @@
               <%= hidden_field_tag :post_id, post.id %>
               <%= submit_tag "Like", :id => "like" %>
             <% end %>
-            <button id="comment">Comment</button>
+            <%= form_for @post, posts_create_path, id: :comment_box do |f| %>
+            <% end %>
+            <div id='CommentBoxesGroup'>
+            </div>
+            <input type='button' value='Comment' id='addButton'>
           </div>
           <% end %>
       </div>

@@ -1,20 +1,39 @@
-// Needs to be fixed, keeps disappearing
+$(document).ready(function(){
 
-function myComment() {
-  var mainForm = document.getElementById("mainForm"),
-    textBox = document.createElement("input");
-    submitButton = document.createElement("input");
+  var counter = 2;
 
-  textBox.id="tmpTextBox";
-  textBox.type="form";
-  submitButton.id="tmpSubmitButton";
-  submitButton.type="button";
+  $("#addButton").click(function () {
 
-  document.getElementById("clickme").onclick = function () {
-    mainForm.appendChild(submitButton);
-  }
-
-  document.getElementById("clickme").onclick = function () {
-    mainForm.appendChild(textBox);
-  }
+if(counter>10){
+          alert("Only 10 commentboxes allow");
+          return false;
 }
+
+var newCommentBoxDiv = $(document.createElement('div'))
+     .attr("id", 'CommentBoxDiv' + counter);
+
+newCommentBoxDiv.after().html('<label>Commentbox #'+ counter + ' : </label>' +
+      '<form action="/posts/create" method="POST" name="commentbox' + counter + 
+      '" id="commentbox' + counter + '" >' + '<input type="text" name="text" />' + 
+      '<input type="submit" value="Submit" />' + '</form>' +
+      '<input type="button" value="cancel" id="removeButton" />');
+
+newCommentBoxDiv.appendTo("#CommentBoxesGroup");
+
+
+$("#removeButton").click(function () {
+  if(counter==1){
+          alert("No more commentbox to remove");
+          return false;
+       }
+
+  counter--;
+
+        $("#CommentBoxDiv" + counter).remove();
+
+     });
+
+
+counter++;
+   });
+});

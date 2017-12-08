@@ -31,7 +31,6 @@ class UsersController < ApplicationController
     @like = Like.new
     @post = Post.new
     @posts = Post.users_posts(params[:id])
-    @numbers = [1, 2, 3, 4, 5]
   end
 
   def search
