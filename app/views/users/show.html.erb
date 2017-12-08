@@ -45,14 +45,16 @@
               <%= post.text %><br>
             </div>
             <div id="post_likes">
-              <%= link_to "#{post.likes} likes", user_path %>
-              <div id="users_who_liked">
-                <ul>
-                  <% find_likers(post.id).each do |name| %>
-                    <li><%= name %></li>
-                  <% end %>
-                </ul>
-              </div>
+              <% if post.likes && post.likes > 0 %>
+                <%= link_to "#{post.likes} likes" %>
+                <div id="users_who_liked">
+                  <ul>
+                    <% find_likers(post.id).each do |name| %>
+                      <li><%= name %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
             </div>
             <%= form_tag posts_like_path do %>
               <%= hidden_field_tag :user_id, @browser.id %>

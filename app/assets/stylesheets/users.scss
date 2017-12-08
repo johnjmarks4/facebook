@@ -156,8 +156,13 @@
 }
 
 #friends_post #post_likes {
+  position: flex;
   display: inline-block;
   margin: 10px;
+  margin-right: 89%;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 
 #users_who_liked {
@@ -166,6 +171,11 @@
     
 a:hover + #users_who_liked {
   display: block;
+}
+
+a:hover + #users_who_liked ul {
+  list-style-type: none;
+  padding-left: 0;
 }
 
 #friends_post #like {
