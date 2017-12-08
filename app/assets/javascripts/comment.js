@@ -13,9 +13,8 @@ var newCommentBoxDiv = $(document.createElement('div'))
      .attr("id", 'CommentBoxDiv' + counter);
 
 newCommentBoxDiv.after().html('<label>Commentbox #'+ counter + ' : </label>' +
-      '<form action="/posts/create" method="POST" name="commentbox' + counter + 
-      '" id="commentbox' + counter + '" >' + '<input type="text" name="text" />' + 
-      '<input type="submit" value="Submit" />' + '</form>' +
+      '<input type="text" name="text" />' + 
+      '<input type="submit" value="Submit" />' +
       '<input type="button" value="cancel" id="removeButton" />');
 
 newCommentBoxDiv.appendTo("#CommentBoxesGroup");

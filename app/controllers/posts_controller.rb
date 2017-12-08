@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    redirect_to posts_create_path post: { text: params[:text], user_id: params[:user_id], parent_id: params[:post_id] }
   end
 
   def create

@@ -8,13 +8,15 @@ Rails.application.routes.draw do
 
   get 'posts/index', to: 'posts#index'
 
+  get 'posts/new'
+
+  post 'posts/new'
+
   get 'posts/create' => "posts#create"
 
   post 'posts/create' => "posts#create"
 
   get 'posts/show(:id)' => "posts#show"
-
-  get 'posts/new'
 
   get 'posts/edit'
 
