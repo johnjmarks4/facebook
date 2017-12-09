@@ -145,6 +145,8 @@
   border: thin solid rgb(193, 193, 193);
   border-radius: 3px;
   overflow: auto;
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 
 #friends_post #user_text {
@@ -192,7 +194,7 @@ a:hover + #users_who_liked ul {
   visibility: visible;
 }
 
-#friends_post #comment {
+#friends_post #addButton {
   float: left;
   margin: 5px;
   left: 100px;
@@ -206,6 +208,41 @@ a:hover + #users_who_liked ul {
   border: none;
   border-radius: 10px;
   visibility: visible;
+}
+
+#friends_post #CommentBoxDiv2 {
+  position: relative;
+  padding-top: 4%;
+  padding-bottom: 2%;
+  padding-left: 2%;
+  width: 100%;
+  float: left;
+  height: 50px;
+  background-color: #F6F7F9;
+  border-top: thin solid rgb(193, 193, 193);
+}
+
+#friends_post #CommentBoxDiv2 #comment_field {
+  position: relative;
+  margin-left: 2%;
+  margin-right: 20%;
+  margin-bottom: 2%;
+  height: 40%;
+  width: 80%;
+  float: left;
+  border-radius: 10px;
+  border: thin solid rgb(193, 193, 193);
+}
+
+#friends_post #CommentBoxDiv2 .comment_buttons {
+  position: relative;
+  margin-left: 2%;
+  float: left;
+  background-color: #4267b2;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 80%;
 }
 
 #wall .gravatar {

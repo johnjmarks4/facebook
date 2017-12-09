@@ -4,33 +4,30 @@ $(document).ready(function(){
 
   $("#addButton").click(function () {
 
-if(counter>10){
-          alert("Only 10 commentboxes allow");
-          return false;
+if(counter>2){
+  return false;
 }
 
 var newCommentBoxDiv = $(document.createElement('div'))
-     .attr("id", 'CommentBoxDiv' + counter);
+  .attr("id", 'CommentBoxDiv' + counter);
 
-newCommentBoxDiv.after().html('<label>Commentbox #'+ counter + ' : </label>' +
-      '<input type="text" name="text" />' + 
-      '<input type="submit" value="Submit" />' +
-      '<input type="button" value="cancel" id="removeButton" />');
+newCommentBoxDiv.after().html('<input type="text" name="text" id="comment_field" />' + 
+  '<input type="submit" value="Submit" class="comment_buttons" />' +
+  '<input type="button" value="Cancel" class="comment_buttons" id="removeButton" />');
 
 newCommentBoxDiv.appendTo("#CommentBoxesGroup");
 
 
 $("#removeButton").click(function () {
   if(counter==1){
-          alert("No more commentbox to remove");
-          return false;
-       }
+    return false;
+  }
 
   counter--;
 
-        $("#CommentBoxDiv" + counter).remove();
+    $("#CommentBoxDiv" + counter).remove();
 
-     });
+  });
 
 
 counter++;
