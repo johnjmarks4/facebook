@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   validates :text, length: { maximum: 1000 }, presence: true
   belongs_to :user
-  has_many :comments, :class_name => "Post", :foreign_key => "parent_id"
+  has_many :comments
 
   def self.users_posts(user_id)
     Post.where(user_id: user_id).order(created_at: :desc)

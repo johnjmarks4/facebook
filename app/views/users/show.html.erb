@@ -61,7 +61,7 @@
               <%= hidden_field_tag :post_id, post.id %>
               <%= submit_tag "Like", :id => "like" %>
             <% end %>
-            <%= form_tag posts_new_path do %>
+            <%= form_tag comments_new_path do %>
               <div id='CommentBoxesGroup'>
                 <%= hidden_field_tag :user_id, @browser.id %>
                 <%= hidden_field_tag :post_id, post.id %>

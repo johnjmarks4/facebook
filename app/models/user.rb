@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"      
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :posts
+  has_many :comments
 
   def self.users_matching_name(name)
     first_name = name.split(" ")[0]
