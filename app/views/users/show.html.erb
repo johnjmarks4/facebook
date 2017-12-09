@@ -36,15 +36,15 @@
 
       <div id="wall">
         <% @posts.each do |post| %>
-          <div id="friends_post">
+          <div id="friends_post" class="user_post">
             <%= gravatar_for find_user_by_id(post.user_id) %>
-            <div id="poster_name">
+            <div class="poster_name">
               <%= link_to post.poster_name, user_path(post.user_id) %>
             </div> <br>
-            <div id="user_text">
+            <div class="user_text">
               <%= post.text %><br>
             </div>
-            <div id="post_likes">
+            <div class="post_likes">
               <% if post.likes && post.likes > 0 %>
                 <%= link_to "#{post.likes} likes" %>
                 <div id="users_who_liked">
@@ -69,7 +69,25 @@
               </div>
             <% end %>
           </div>
+          <% if !post.comments.empty? %>
+            <div id="post_comments">
+              <% post.comments.each do |comment| %>
+                <div id="user_comment" class="user_post">
+                  <%= gravatar_for find_user_by_id(comment.user_id) %>
+                  <div id="commenter_name">
+                    <%= link_to comment.poster_name, user_path(comment.user_id) %>
+                  </div> <br>
+                  <div class="user_text">
+                    <%= comment.text %>
+                  </div>
+                  <div class="post_likes">
+                    <%= comment.likes %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           <% end %>
+        <% end %>
       </div>
     </div>
   </div>
