@@ -145,20 +145,21 @@
   border: thin solid rgb(193, 193, 193);
   border-radius: 3px;
   overflow: auto;
-  white-space: nowrap;
   overflow-x: hidden;
 }
 
 #friends_post #user_text {
   float: left;
   display: inline-block;
-  margin: 5px 12px;
+  padding-left: 2%;
+  padding-right: 2%;
   font-size: 15px;
   word-break: break-word;
 }
 
 #friends_post #post_likes {
   position: flex;
+  float: left;
   display: inline-block;
   margin: 10px;
   margin-right: 89%;
