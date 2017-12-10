@@ -30,7 +30,11 @@ class UsersController < ApplicationController
     @profile_owner_name = "#{@profile_owner.first_name} #{@profile_owner.last_name}"
     @like = Like.new
     @post = Post.new
-    @posts = Post.users_posts(params[:id])
+    if @profile_owner == current_user
+      @posts = Post.friends_posts(params[:id])
+    else
+      @posts = Post.users_posts(params[:id])
+    end
   end
 
   def search
