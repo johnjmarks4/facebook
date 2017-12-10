@@ -2,7 +2,9 @@ $(document).ready(function(){
 
   var counter = 2;
 
-  $("#addButton").click(function () {
+  $("[id^=addButton]").click(function () {
+
+    var i = this.id[this.id.length -1];
 
 if(counter>2){
   return false;
@@ -15,7 +17,9 @@ newCommentBoxDiv.after().html('<input type="text" name="text" id="comment_field"
   '<input type="submit" value="Submit" class="comment_buttons" />' +
   '<input type="button" value="Cancel" class="comment_buttons" id="removeButton" />');
 
-newCommentBoxDiv.appendTo("#CommentBoxesGroup");
+console.log(newCommentBoxDiv)
+
+newCommentBoxDiv.appendTo("#CommentBoxesGroup" + i);
 
 
 $("#removeButton").click(function () {
