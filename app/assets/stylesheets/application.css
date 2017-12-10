@@ -50,6 +50,7 @@ html, body {
   display: inline-block;
   width: 414px;
   height: 20px;
+  left: 70px;
   top: 11.5%;
   padding: 0;
 }
@@ -57,8 +58,7 @@ html, body {
 #searchbar .text_field {
   position: absolute;
   width: 350px;
-  height: 100%;
-  left: 7%;
+  height: 23px;
   top: 23%;
   padding-right: 5px;
   padding-left: 8px;
@@ -72,8 +72,8 @@ html, body {
   background: url(magnifying_glass_gray.png);
   background-clip: content-box;
   top: 15%;
-  left: 94%;
-  height: 25px;
+  left: 363px;
+  height: 27px;
   width: 46px;
   padding: 0;
   color: white;
