@@ -32,7 +32,7 @@ html, body {
   display: inline-block;
   height: 42px;
   width: 500px;
-  left: 550px;
+  left: 542px;
   top: 14px;
 }
 
@@ -50,7 +50,7 @@ html, body {
   display: inline-block;
   width: 414px;
   height: 20px;
-  left: 70px;
+  left: 73px;
   top: 11.5%;
   padding: 0;
 }
@@ -85,6 +85,9 @@ html, body {
  /* Dropdown Button */
 .dropbtn {
   position: relative;
+  right: 280px;
+  margin-right: 200px;
+  margin-left: 200px;
   background-color: #4267b2;
   font-size: 16px;
   border: none;
