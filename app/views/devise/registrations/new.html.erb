@@ -1,39 +1,46 @@
-<h2>Sign up</h2>
+<script>
+  function inputFocus(i){
+    if(i.value==i.defaultValue){ i.value=""; i.style.color="#000";
+    }
+  }
+  function inputBlur(i){
+    if(i.value==""){ i.value=i.defaultValue; i.style.color="#888";
+    }
+  }
+  function changePassword(i){
+    if(i.value==i.defaultValue){ i.value=""; i.style.color="#000"; i.type="password";
+    }
+  }
+</script>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div id="headline">
+  <h2>Create a New Account</h2>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "sign_in" }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+  <div class="name" id="first_name">
+    <%= f.text_field :first_name, value: "First name", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
+  </div>
+
+  <div class="name" id="last_name">
+    <%= f.text_field :last_name, value: "Last name", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.email_field :email, value: "Email", onfocus: "inputFocus(this)", onblur: "inputBlur(this)", autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.password_field :password, value: "Password", type: "text", onfocus: "changePassword(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, value: "Password confirmation", type: "text", onfocus: "changePassword(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Create Account" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
