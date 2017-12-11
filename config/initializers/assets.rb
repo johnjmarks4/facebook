@@ -13,6 +13,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( users.css )
 
+Rails.application.config.assets.precompile += %w( registrations.css )
+
 Rails.application.config.assets.precompile += %w( notifications.js )
 
 Rails.application.config.assets.precompile += %w( comment.js )

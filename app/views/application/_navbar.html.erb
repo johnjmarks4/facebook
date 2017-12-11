@@ -1,52 +1,67 @@
 <div id="navbar">
-      
-  <div id="searchbar">
-    <%= form_tag users_search_path do %>
-      <%= text_field_tag :name, nil, :class => "text_field" %>
-      <%= submit_tag "", :class => "button" %>
-    <% end %>
-  </div>
+  
+  <% if user_signed_in? %>
+    <div id="searchbar">
+      <%= form_tag users_search_path do %>
+        <%= text_field_tag :name, nil, :class => "text_field" %>
+        <%= submit_tag "", :class => "button" %>
+      <% end %>
+    </div>
+  <% end %>
 
-  <div id="login_options">
-    <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="login_options">
       Signed in as: <%= current_user.email %>
       <%= link_to "Sign out",  destroy_user_session_path %>
-    <% else %>
-      <%= link_to "Sign up", users_sign_up_path %> or <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
-    <%= link_to "All users", users_list_path %>
+      <%= link_to "All users", users_list_path %>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
+      <div id="myDropdown" class="dropdown-content">
+      <ul>
+      <% if @friend_requests %>
+        <div id="fr_heading">Friend Requests</div>
+        <% @friend_requests.each do |note| %>
+          <li>
+            <%= note[0] %>
+            <% if note[1] %>
+              <%= form_for @friendship, url: friendships_create_path do |f| %>
+                <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
+                <div><%= f.submit "Accept", :class => "accept" %>
+              <% end %>
+              <%= link_to "Delete Request", friendships_delete_request_path(note[1]), :class => "button" %></div>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+      <% if @likes %>
+        <div id="likes_heading">Likes</div>
+        <% @likes.each do |like| %>
+          <li>
+            <%= like %>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <% if !user_signed_in? %>
+
+  <div id="log_in">
+    <div class="login_options">
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    </div>
+    <%= render "devise/sessions/new" %>
   </div>
 
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
-    <div id="myDropdown" class="dropdown-content">
-    <ul>
-    <% if @friend_requests %>
-      <div id="fr_heading">Friend Requests</div>
-      <% @friend_requests.each do |note| %>
-        <li>
-          <%= note[0] %>
-          <% if note[1] %>
-            <%= form_for @friendship, url: friendships_create_path do |f| %>
-              <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
-              <div><%= f.submit "Accept", :class => "accept" %>
-            <% end %>
-            <%= link_to "Delete Request", friendships_delete_request_path(note[1]), :class => "button" %></div>
-          <% end %>
-        </li>
-      <% end %>
-    <% end %>
-    <% if @likes %>
-      <div id="likes_heading">Likes</div>
-      <% @likes.each do |like| %>
-        <li>
-          <%= like %>
-        </li>
-      <% end %>
-    <% end %>
-    </ul>
-    </div>
-  </div>
+  <% end %>
+
 </div>
 <div class="spacer">
   &nbsp;

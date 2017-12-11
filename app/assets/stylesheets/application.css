@@ -17,6 +17,7 @@ html, body {
   left: 0;
   right: 0;
   color: white;
+  border-bottom: thin solid #29487D;
   font-size: 12.5px;
   padding-left: 5%;
   z-index: 1;
@@ -27,7 +28,7 @@ html, body {
   height: 42px;
 }
 
-#login_options {
+.login_options {
   position: fixed;
   display: inline-block;
   height: 42px;
@@ -36,7 +37,7 @@ html, body {
   top: 14px;
 }
 
-#login_options a {
+.login_options a {
   position: relative;
   left: 20px;
   padding-left: 10px;

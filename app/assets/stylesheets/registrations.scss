@@ -1,3 +1,89 @@
-// Place all the styles related to the registrations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#navbar {
+  height: 82px;
+  background-color: #3b5998;
+  min-width: 1330px;
+}
+
+.spacer {
+  height: 82px;
+}
+
+#log_in {
+  float: right;
+  display: block;
+  margin-right: 200px;
+}
+
+#log_in form {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+#log_in table {
+  position: relative;
+  border-collapse: seperate;
+  bottom: 4px;
+}
+
+#log_in #labels td {
+  font-size: 12px;
+}
+
+#log_in tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+  border-collapse: separate;
+}
+
+#log_in tr {
+  display: table-row;
+}
+
+#log_in input {
+  margin-right: 10px;
+}
+
+#log_in #fields {
+  position: absolute;
+  display: inline-block;
+  right: 100px;
+}
+
+#log_in #user_email {
+  height: 19px;
+  border: thin solid #1d2a5b;
+}
+
+#log_in #user_password {
+  height: 19px;
+  border: thin solid #1d2a5b;
+}
+
+#log_in #log_in_button input {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  text-align: center;
+  background-color: #4267b2;
+  color: white;
+  border-radius: 3px;
+  border: thin solid #29487D;
+  bottom: 1px;
+}
+
+#log_in .login_options {
+  position: absolute;
+  width: 200px;
+  left: 455px;
+  margin-top: 21px;
+}
+
+#log_in #remember_me {
+  position: relative;
+  display: inline-block;
+  right: 125px;
+  top: 32px;
+}

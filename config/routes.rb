@@ -70,7 +70,7 @@ Rails.application.routes.draw do
 
     #delete 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
 
-    root 'users/sessions#create'
+    root 'users/registrations#new'
   end
 
   get 'users/search'

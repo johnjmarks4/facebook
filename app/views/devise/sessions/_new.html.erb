@@ -1,0 +1,34 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <table cellspacing="0" role="presentation">
+    <tbody>
+      <tr id="labels">
+        <td class="email_label">
+          <label for="email">Email</label>
+        </td>
+        <td class="password_label">
+          <label for="password">Password</label>
+        </td>
+      </tr>
+      <tr>
+        <div id="fields">
+          <td>
+            <%= f.email_field :email, autofocus: true %>
+          </td>
+          <td>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </td>
+        </div>
+        <td id="log_in_button">
+          <%= f.submit "Log in" %>
+        </td>
+      </tr>
+
+      <% if devise_mapping.rememberable? -%>
+        <div id="remember_me">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+    </tbody>
+  </table>
+<% end %>
