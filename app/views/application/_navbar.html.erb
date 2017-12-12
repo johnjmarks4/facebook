@@ -54,9 +54,6 @@
   <% if !user_signed_in? %>
 
   <div id="log_in">
-    <div class="login_options">
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    </div>
     <%= render "devise/sessions/new" %>
   </div>
 

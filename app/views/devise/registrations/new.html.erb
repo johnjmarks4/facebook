@@ -43,4 +43,9 @@
   <div class="actions">
     <%= f.submit "Create Account" %>
   </div>
+
+  <p>... or you can...</p>
+  <div id="facebook_login">
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  </div>
 <% end %>
