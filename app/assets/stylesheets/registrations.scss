@@ -11,7 +11,8 @@
 #log_in {
   float: right;
   display: block;
-  margin-right: 200px;
+  margin-right: 320px;
+  margin-top: 18px;
 }
 
 #log_in form {
@@ -75,10 +76,16 @@
 }
 
 #log_in #remember_me {
-  position: relative;
+  
   display: inline-block;
-  right: 125px;
-  top: 32px;
+  margin-top: 4px;
+  margin-left: 30px;
+  color: white;
+}
+
+#log_in .remember_me_label {
+  display: block;
+  margin-right: 10px;
 }
 
 #headline {

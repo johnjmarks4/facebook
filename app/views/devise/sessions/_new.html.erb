@@ -2,6 +2,9 @@
   <table cellspacing="0" role="presentation">
     <tbody>
       <tr id="labels">
+        <td class="remember_me_label">
+          <label for="remember_me">Remember me</label>
+        </td>
         <td class="email_label">
           <label for="email">Email</label>
         </td>
@@ -11,6 +14,11 @@
       </tr>
       <tr>
         <div id="fields">
+          <% if devise_mapping.rememberable? -%>
+            <td id="remember_me">
+              <%= f.check_box :remember_me %>
+            </td>
+          <% end -%>
           <td>
             <%= f.email_field :email, autofocus: true %>
           </td>
@@ -22,13 +30,6 @@
           <%= f.submit "Log in" %>
         </td>
       </tr>
-
-      <% if devise_mapping.rememberable? -%>
-        <div id="remember_me">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end -%>
     </tbody>
   </table>
 <% end %>
