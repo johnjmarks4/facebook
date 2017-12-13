@@ -38,14 +38,64 @@
 
 #profile_options {
   position: relative;
+  float: left;
   display: block;
-  width: 350px;
-  top: 300px;
-  text-align: center;
+  width: 280px;
+  top: 288px;
+  font-size: 16px;
+  /*line-height: 20px;*/
+  background-color: white;
+  border: thin solid rgb(193, 193, 193);
+  border-radius: 5px;
+  text-align: left;
 }
 
-#profile_options ul li {
-  display: inline;
+#profile_options #pencil_image {
+  float: left;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: rgb(64, 128, 255);
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+#profile_options #pencil_image img {
+  height: 9px;
+  width: 9px;
+}
+
+#profile_options p {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#profile_options ul {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 0;
+  width: 92.5%;
+  font-weight: bold;
+  border-top: thin solid rgb(193, 193, 193);
+}
+
+#profile_options li {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  background-color: rgb(246, 247, 249);
+  border: thin solid rgb(193, 193, 193);
+  border-top: none;
+}
+
+#profile_options li a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #666;
+  font-size: 13px;
 }
 
 #center_wrapper {
@@ -90,7 +140,7 @@
   position: relative;
   display: block;
   border: thin solid rgb(193, 193, 193);
-  width: 82%;
+  width: 410.88px;
   height: 107px;
   resize: none;
   padding-top: 20px;

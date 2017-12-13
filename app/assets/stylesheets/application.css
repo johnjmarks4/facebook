@@ -53,7 +53,7 @@ html, body {
   height: 20px;
   left: 73px;
   top: 11.5%;
-  padding: 0;
+  padding: 0px;
 }
 
 #searchbar .text_field {
@@ -71,12 +71,13 @@ html, body {
 #searchbar .button {
   position: absolute;
   background: url(magnifying_glass_gray.png);
-  background-clip: content-box;
+  background-color: #F6F7F9;
   top: 15%;
   left: 363px;
-  height: 27px;
+  height: 28px;
   width: 46px;
   padding: 0;
+  padding-bottom: 1px;
   color: white;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -87,6 +88,7 @@ html, body {
 .dropbtn {
   position: relative;
   right: 280px;
+  margin-top: 2.5px;
   margin-right: 200px;
   margin-left: 200px;
   background-color: #4267b2;

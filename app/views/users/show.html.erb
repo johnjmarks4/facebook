@@ -8,9 +8,17 @@
 
       <div id="profile_options">
         <% if @browser.id == @profile_owner.id %>
+          <div id="pencil_image">
+            <%= image_tag "pencil" %>
+          </div>
+          <p>Profile Options</p>
           <ul>
-            <li><%= link_to "Edit", users_edit_path(@browser.id) %></li>
-            <li><%= link_to "Delete", users_destroy_path(@browser.id) %></li>
+            <li>
+              <%= link_to "Edit", users_edit_path(@browser.id) %>
+            </li>
+            <li>
+              <%= link_to "Delete", users_destroy_path(@browser.id) %>  
+            </li>
           </ul>
         <% end %>
       </div>

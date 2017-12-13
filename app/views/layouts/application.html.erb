@@ -4,8 +4,11 @@
     <title>OdinFacebook</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', 'users', 'registrations', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'notifications', 'comment', 'registrations', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% if !user_signed_in? %>
+      <%= stylesheet_link_tag 'registrations', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
+    <%= javascript_include_tag 'application', 'notifications', 'comment', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
