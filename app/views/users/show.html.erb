@@ -6,8 +6,8 @@
         <%= @profile_owner_name %>
       </div>
 
-      <div id="profile_options">
-        <% if @browser.id == @profile_owner.id %>
+      <% if @browser.id == @profile_owner.id %>
+        <div id="profile_options">
           <div id="pencil_image">
             <%= image_tag "pencil" %>
           </div>
@@ -20,24 +20,34 @@
               <%= link_to "Delete", users_destroy_path(@browser.id) %>  
             </li>
           </ul>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
   <div id="center_wrapper">
     <div id="posts_and_wall">
       <div id="post_field">
+        <div id="top_bar">
+        </div>
         <%= form_for @post, url: posts_create_path do |f| %>
           <%= f.hidden_field :user_id, value: @browser.id %>
           <%= f.hidden_field :poster_name, value: @browser_name %>
           <%= f.hidden_field :likes, value: 0 %>
-          <div id="top_bar">
-          <%= f.label "What's on your mind?" %> <br>
-          </div>
-          <%= f.text_area :text %>
+          <%= f.text_area :text, value: "What's on your mind?", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
           <div id="bottom_bar">
-          <%= f.submit "Submit", :class => "button" %>
+            <%= f.submit "Submit", :class => "button" %>
+        <% end %>
+          <% if @profile_owner == current_user %>
+            <%= form_tag user_path(params[:id]) do %>
+              <% if !session[:own_comments] || session[:own_comments] == "false" %>
+                <%= hidden_field_tag(:own_comments, "true") %>
+                <%= submit_tag "Show your own posts", class: :own_posts %>
+              <% elsif session[:own_comments] && session[:own_comments] = "true" %>
+                <%= hidden_field_tag(:own_comments, "false") %>
+                <%= submit_tag "Show your friends' posts", class: :own_posts %>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
       </div>

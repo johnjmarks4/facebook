@@ -24,16 +24,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    if params[:own_comments]
+      session[:own_comments] = params[:own_comments]
+    end
+
     @browser = current_user
     @browser_name = "#{current_user.first_name} #{current_user.last_name}"
     @profile_owner = User.find(params[:id])
     @profile_owner_name = "#{@profile_owner.first_name} #{@profile_owner.last_name}"
     @like = Like.new
     @post = Post.new
-    if @profile_owner == current_user
-      @posts = Post.friends_posts(params[:id])
-    else
+
+    if session[:own_comments] == "true" || @profile_owner != current_user
       @posts = Post.users_posts(params[:id])
+    else
+      @posts = Post.friends_posts(params[:id])
     end
   end
 

@@ -33,7 +33,7 @@
   top: 30px;
   width: 200px;
   height: 15%;
-  font-size: 150%;;
+  font-size: 150%;
 }
 
 #profile_options {
@@ -91,10 +91,12 @@
 }
 
 #profile_options li a {
+  display: block;
   margin-left: 10px;
-  text-decoration: none;
+  height: 100%;
   color: #666;
   font-size: 13px;
+  text-decoration: none;
 }
 
 #center_wrapper {
@@ -128,6 +130,24 @@
   font-size: 10pt;
 }
 
+#bottom_bar .own_posts {
+  background:none!important;
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  color: #365899;
+  font-size: 12.5px;
+  font-weight: bold;
+  line-height: 23.991px;
+}
+
+#bottom_bar .own_posts:focus {
+  outline: none;
+  border: none;
+  text-decoration: none;
+  -webkit-appearance: none;
+}
+
 #post_field {
   position: relative;
   display: block;
@@ -146,6 +166,7 @@
   padding-right: 58px;
   padding-bottom: 13px;
   padding-left: 30px;
+  color: #888;
 }
 
 #post_field textarea:focus {
