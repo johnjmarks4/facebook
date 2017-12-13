@@ -57,7 +57,8 @@
   background-color: rgb(64, 128, 255);
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 5px;
   border-radius: 3px;
 }
 
@@ -67,15 +68,13 @@
 }
 
 #profile_options p {
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 0px;
 }
 
 #profile_options ul {
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin: 10px;
   padding: 0;
   width: 92.5%;
   font-weight: bold;

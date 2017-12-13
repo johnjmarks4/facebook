@@ -28,6 +28,20 @@ html, body {
   height: 42px;
 }
 
+#notifications_spacer {
+  position: relative;
+  display: inline-block;
+  left: 840px;
+  top: 3px;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-top: 8px;
+  width: 100px;
+  height: 20px;
+  border-left: medium solid #3b5c9f;
+  border-right: medium solid #3b5c9f;
+}
+
 .login_options {
   position: fixed;
   display: inline-block;
@@ -87,10 +101,8 @@ html, body {
  /* Dropdown Button */
 .dropbtn {
   position: relative;
-  right: 280px;
-  margin-top: 2.5px;
   margin-right: 200px;
-  margin-left: 200px;
+  margin-left: 101px;
   background-color: #4267b2;
   font-size: 16px;
   border: none;
@@ -113,7 +125,7 @@ html, body {
   position: relative;
   display: inline-block;
   top: 5px;
-  left: 1000px;
+  left: 720px;
   height: 24px;
   width: auto;
 }
@@ -127,8 +139,8 @@ html, body {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
-  right: 0px;
+  
+  right: 199px;
   width: 402px;
   max-height: 503px;
   background-color: rgb(255, 255, 255);
