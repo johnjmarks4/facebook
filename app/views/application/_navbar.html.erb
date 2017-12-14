@@ -18,6 +18,20 @@
     </span>
 
     <ul id="right_menu">
+  
+      <li class="right_options">
+        <div id="gravatar_wrapper">
+          <%= link_to gravatar_for(current_user), user_path(current_user.id), id: "home_button" %>
+          <span id="user_name">
+            <%= current_user.first_name %>
+          </span>
+        </div>
+      </li>
+
+      <li class="right_options">
+        <%= link_to image_tag("friends"), user_path(current_user.id) %>
+      </li>
+
       <li class="dropdown">
         <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
         <div id="myDropdown" class="dropdown-content">
@@ -49,10 +63,6 @@
         </div>
       </li>
     <% end %>
-
-    <li class="right_options">
-      <%= link_to gravatar_for(current_user), user_path(current_user.id), id: "home_button" %>
-    </li>
   <ul>
 
   <% if !user_signed_in? %>

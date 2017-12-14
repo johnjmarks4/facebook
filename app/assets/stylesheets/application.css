@@ -84,11 +84,14 @@ html, body {
 
 #searchbar .button {
   position: absolute;
-  background: url(magnifying_glass_gray.png);
+  background: url(magnifying_glass.png);
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: #F6F7F9;
   top: 15%;
   left: 363px;
-  height: 28px;
+  height: 27px;
   width: 46px;
   padding: 0;
   padding-bottom: 1px;
@@ -96,6 +99,7 @@ html, body {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   border: 1px solid #29487d;
+  border-left: none;
 }
 
  /* Dropdown Button */
@@ -236,10 +240,25 @@ html, body {
   height: 21px;
 }
 
+#right_menu img {
+  height: 40px;
+}
+
+#right_menu #gravatar_wrapper {
+  margin-right: 10px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 27px;
+}
+
+#right_menu #gravatar_wrapper #user_name {
+  margin-left: 3px;
+}
+
 #home_button img {
   vertical-align: middle;
-  height: 32px;
-  width: 32px;
+  height: 27px;
+  width: 27px;
   border-radius: 100%;
   margin: 0;
 }
