@@ -7,52 +7,53 @@
         <%= submit_tag "", :class => "button" %>
       <% end %>
     </div>
-  <% end %>
 
-  <% if user_signed_in? %>
     <div class="login_options">
       Signed in as: <%= current_user.email %>
       <%= link_to "Sign out",  destroy_user_session_path %>
       <%= link_to "All users", users_list_path %>
     </div>
-  <% end %>
 
-  <span id="notifications_spacer">
-  </span>
-  
-  <% if user_signed_in? %>
+    <span id="notifications_spacer">
+    </span>
 
-    <div class="dropdown">
-      <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
-      <div id="myDropdown" class="dropdown-content">
-      <ul>
-      <% if @friend_requests %>
-        <div id="fr_heading">Friend Requests</div>
-        <% @friend_requests.each do |note| %>
-          <li>
-            <%= note[0] %>
-            <% if note[1] %>
-              <%= form_for @friendship, url: friendships_create_path do |f| %>
-                <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
-                <div><%= f.submit "Accept", :class => "accept" %>
+    <ul id="right_menu">
+      <li class="dropdown">
+        <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
+        <div id="myDropdown" class="dropdown-content">
+        <ul>
+        <% if @friend_requests %>
+          <div id="fr_heading">Friend Requests</div>
+          <% @friend_requests.each do |note| %>
+            <li>
+              <%= note[0] %>
+              <% if note[1] %>
+                <%= form_for @friendship, url: friendships_create_path do |f| %>
+                  <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
+                  <div><%= f.submit "Accept", :class => "accept" %>
+                <% end %>
+                <%= link_to "Delete Request", friendships_delete_request_path(note[1]), :class => "button" %></div>
               <% end %>
-              <%= link_to "Delete Request", friendships_delete_request_path(note[1]), :class => "button" %></div>
-            <% end %>
-          </li>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-      <% if @likes %>
-        <div id="likes_heading">Likes</div>
-        <% @likes.each do |like| %>
-          <li>
-            <%= like %>
-          </li>
+        <% if @likes %>
+          <div id="likes_heading">Likes</div>
+          <% @likes.each do |like| %>
+            <li>
+              <%= like %>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-      </ul>
-      </div>
-    </div>
-  <% end %>
+        </ul>
+        </div>
+      </li>
+    <% end %>
+
+    <li class="right_options">
+      <%= link_to gravatar_for(current_user), user_path(current_user.id), id: "home_button" %>
+    </li>
+  <ul>
 
   <% if !user_signed_in? %>
 
