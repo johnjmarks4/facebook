@@ -17,4 +17,8 @@ module UsersHelper
     users = likes.map { |like| like.user_id }
     users.map { |user_id| User.find(user_id).first_name + " " + User.find(user_id).last_name }
   end
+
+  def friends?(user)
+    current_user.friends.include?(user)
+  end
 end

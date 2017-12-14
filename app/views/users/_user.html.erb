@@ -1,14 +1,13 @@
 <li>
-  <div id="user">
-    <%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %>
-  </div>
+  <%= gravatar_for user %>
+  <%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %>
     
-  <% if !@friends.nil? && !@friends.include?(user) %>
+  <% if !friends?(user) %>
     <%= form_tag friendships_add_path do %>
-      <div id="add_friend">
+      <span id="add_friend">
         <%= hidden_field_tag(:friend_id, user.id) %>
-        <%= button_tag("add") %>
-      </div>
+        <%= button_tag("Add Friend") %>
+      </span>
     <% end %>
   <% end %>
 </li>

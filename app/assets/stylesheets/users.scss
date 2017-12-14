@@ -377,3 +377,97 @@ a:hover + #users_who_liked ul {
 #user_comment .user_text {
   padding-left: 3%;
 }
+
+#center_column {
+  width: 500px;
+  margin: 70px auto;
+  background-color: white;
+  border-radius: 5px;
+  border: thin solid rgb(193, 193, 193);
+}
+
+h1 {
+  text-align: center;
+}
+
+li .gravatar {
+  position: relative;
+  display: inline-block;
+  top: 0px;
+  height: 74px;
+  width: 74px;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+.users_list li {
+  display: inline;
+}
+
+.users li {
+  border-bottom: thin solid rgb(193, 193, 193);
+  height: 99px;
+  width: 501px;
+}
+
+.users {
+  border-top: thin solid rgb(193, 193, 193);
+  list-style-type: none;
+  padding-left: 0;
+  -webkit-padding-start: 0px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.users a {
+  position: relative;
+  bottom: 48px;
+  margin-left: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.users #add_friend {
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  height: 24px;
+  width: 124px;
+  bottom: 70px;
+  background-color: rgb(246, 247, 249);
+  border: thin solid rgb(193, 193, 193);
+  border-radius: 3px;
+}
+
+.users button {
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0! important;
+  cursor: pointer;
+  outline: inherit !important;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.users_list {
+  position: relative;
+  display: inline-block;
+  width: 500px;
+  height: 81px;
+}
+
+.pagination {
+  visibility: visible;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 5px;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-left: 5px;
+}
