@@ -1,0 +1,19 @@
+<div class="name" id="first_name">
+  <%= f.text_field :first_name, value: first, onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
+</div>
+
+<div class="name" id="last_name">
+  <%= f.text_field :last_name, value: last, onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
+</div>
+
+<div class="field" id="email">
+  <%= f.email_field :email, value: email, onfocus: "inputFocus(this)", onblur: "inputBlur(this)", autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.password_field :password, value: "Password", type: "text", onfocus: "changePassword(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.password_field :password_confirmation, value: "Password confirmation", type: "text", onfocus: "changePassword(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
+</div>

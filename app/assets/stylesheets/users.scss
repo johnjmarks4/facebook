@@ -36,7 +36,7 @@
   font-size: 150%;
 }
 
-#profile_options {
+#left_profile_options {
   position: relative;
   float: left;
   display: block;
@@ -50,7 +50,7 @@
   text-align: left;
 }
 
-#profile_options #pencil_image {
+#left_profile_options #pencil_image {
   float: left;
   padding-left: 6px;
   padding-right: 6px;
@@ -62,18 +62,18 @@
   border-radius: 3px;
 }
 
-#profile_options #pencil_image img {
+#left_profile_options #pencil_image img {
   height: 9px;
   width: 9px;
   color: white;
 }
 
-#profile_options p {
+#left_profile_options p {
   margin-top: 15px;
   margin-bottom: 0px;
 }
 
-#profile_options ul {
+#left_profile_options ul {
   float: left;
   margin: 10px;
   padding: 0;
@@ -82,7 +82,7 @@
   border-top: thin solid rgb(193, 193, 193);
 }
 
-#profile_options li {
+#left_profile_options li {
   display: block;
   height: 50px;
   line-height: 50px;
@@ -91,7 +91,7 @@
   border-top: none;
 }
 
-#profile_options li a {
+#left_profile_options li a {
   display: block;
   margin-left: 10px;
   height: 100%;

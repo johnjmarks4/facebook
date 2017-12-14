@@ -72,6 +72,10 @@ Rails.application.routes.draw do
 
     get 'users/list'
 
+    get 'users/friends'
+
+    get 'users/edit' => 'devise/registrations#edit'
+
     root 'users/registrations#new'
   end
 
@@ -80,8 +84,6 @@ Rails.application.routes.draw do
   post 'users/search' => 'users#search'
 
   post 'users/:id' => 'users#show'
-
-  get 'users/edit'
 
   get 'friendships/add'
 

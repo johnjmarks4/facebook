@@ -2,28 +2,10 @@
   <h2>Create a New Account</h2>
 </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "sign_in" }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "basic_form" }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="name" id="first_name">
-    <%= f.text_field :first_name, value: "First name", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
-  </div>
-
-  <div class="name" id="last_name">
-    <%= f.text_field :last_name, value: "Last name", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
-  </div>
-
-  <div class="field">
-    <%= f.email_field :email, value: "Email", onfocus: "inputFocus(this)", onblur: "inputBlur(this)", autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.password_field :password, value: "Password", type: "text", onfocus: "changePassword(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.password_field :password_confirmation, value: "Password confirmation", type: "text", onfocus: "changePassword(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
-  </div>
+  <%= render :partial => "user_form", :locals => { :f => f, :first =>"First name", :last =>"Last name", :email => "Email" } %>
 
   <div class="actions">
     <%= f.submit "Create Account" %>
@@ -31,6 +13,6 @@
 
   <p>... or you can...</p>
   <div id="facebook_login">
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "basic_form" %>
   </div>
 <% end %>

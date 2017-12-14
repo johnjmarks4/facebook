@@ -4,7 +4,7 @@
     <title>OdinFacebook</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'users', 'user_form', 'profile_options', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% if !user_signed_in? %>
       <%= stylesheet_link_tag 'registrations', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>

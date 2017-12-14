@@ -43,14 +43,26 @@ class UsersController < ApplicationController
   end
 
   def search
+    @title = "Search Results"
     if params[:name]
       @friends = current_user.friends
       @users = User.users_matching_name(params[:name])
     end
+    render users_search_path
   end
 
   def list
+    @title = "All Users"
+    @friends = current_user.friends
     @users = User.all
+    render users_search_path
+  end
+
+  def friends
+    @title = "Your Friends"
+    @friends = current_user.friends
+    @users = @friends
+    render users_search_path
   end
 
   def edit
