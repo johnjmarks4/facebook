@@ -17,7 +17,7 @@
               <%= link_to "Edit", users_edit_path(@browser.id) %>
             </li>
             <li>
-              <%= link_to "Delete", users_destroy_path(@browser.id) %>  
+              <%= link_to "Delete", users_destroy_path(@browser.id), data: { confirm: "Are you sure?" } %>  
             </li>
           </ul>
         </div>

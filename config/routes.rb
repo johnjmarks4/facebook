@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   get 'users/destroy'
 
+  post 'users/destroy(:id)' => 'users#destroy'
+
   as :user do
 
     resources :users, :only => [:new, :create, :index]
