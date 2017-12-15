@@ -5,7 +5,10 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    super
+    
+    if !user_signed_in? && params[:user]
+      redirect_to root_path
+    end
   end
 
   # POST /resource/sign_in
@@ -22,8 +25,8 @@ class Users::SessionsController < Devise::SessionsController
 
   def message_if_account_not_found
     if !user_signed_in? && params[:user]
-      flash[:alert] = "The email or phone number you’ve entered doesn’t match any account. 
-                      #{view_context.link_to('Sign up for an account', new_user_session_path)}.".html_safe
+      flash[:alert] = "The email or phone number you’ve entered doesn’t match any account.
+                      Sign up below."
     end
   end
 end

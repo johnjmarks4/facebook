@@ -6,7 +6,13 @@ html, body {
   background-color: #E9EBEE;
   height: 100%;
   width: 100%;
-} 
+}
+
+#flash {
+  position: absolute;
+  left: 405px;
+  top: 80px;
+}
 
 #right_menu {
   float: right;
