@@ -11,6 +11,7 @@ class Like < ApplicationRecord
     posts = Post.where(user_id: current_user)
     likes = posts.map { |post| Like.where(post_id: post.id) }
     likes.reject! { |l| notification_history.include?(l) || l.empty? }
+    likes
   end
 
   private

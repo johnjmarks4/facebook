@@ -8,7 +8,7 @@ html, body {
   width: 100%;
 }
 
-#flash {
+.flash {
   position: absolute;
   left: 405px;
   top: 80px;

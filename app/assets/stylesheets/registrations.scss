@@ -89,9 +89,10 @@
   margin-right: 10px;
 }
 
-#flash {
+.flash {
   position: absolute;
-  right: 180px;
+  right: 180px !important;
+  left: 553px;
 }
 
 p {
