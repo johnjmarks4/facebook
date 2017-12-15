@@ -7,6 +7,8 @@
     <%= stylesheet_link_tag 'application', 'users', 'user_form', 'profile_options', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% if !user_signed_in? %>
       <%= stylesheet_link_tag 'registrations', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% else %>
+      <%= stylesheet_link_tag 'navbar', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <%= javascript_include_tag 'application', 'notifications', 'comment', 'text_value', 'data-turbolinks-track': 'reload' %>
   </head>

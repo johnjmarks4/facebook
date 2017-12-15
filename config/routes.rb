@@ -74,7 +74,7 @@ Rails.application.routes.draw do
 
     get 'users/friends'
 
-    get 'users/edit' => 'devise/registrations#edit'
+    get 'users/edit' => 'users/registrations#edit'
 
     root 'users/registrations#new'
   end

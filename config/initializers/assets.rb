@@ -19,6 +19,8 @@ Rails.application.config.assets.precompile += %w( user_form.css )
 
 Rails.application.config.assets.precompile += %w( profile_options.css )
 
+Rails.application.config.assets.precompile += %w(navbar.css )
+
 Rails.application.config.assets.precompile += %w( notifications.js )
 
 Rails.application.config.assets.precompile += %w( comment.js )

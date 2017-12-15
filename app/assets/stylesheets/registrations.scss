@@ -1,7 +1,16 @@
 #navbar {
   height: 82px;
   background-color: #3b5998;
-  min-width: 1330px;
+  position: fixed;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  border-bottom: thin solid #29487D;
+  font-size: 12.5px;
+  padding-left: 5%;
+  z-index: 1;
 }
 
 .spacer {
@@ -11,20 +20,16 @@
 #log_in {
   float: right;
   display: block;
-  margin-right: 320px;
-  margin-top: 18px;
+  margin-right: 180px;
+  margin-top: auto;
 }
 
-#log_in form {
-  display: block;
-  margin: 0;
-  padding: 0;
+#log_in input, label {
+  margin-left: 10px;
 }
 
 #log_in table {
-  position: relative;
   border-collapse: seperate;
-  bottom: 4px;
 }
 
 #log_in #labels td {
@@ -40,10 +45,6 @@
 
 #log_in tr {
   display: table-row;
-}
-
-#log_in input {
-  margin-right: 10px;
 }
 
 #log_in #fields {

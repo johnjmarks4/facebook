@@ -66,9 +66,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update_attributes(user_params)
+    if @user
+      redirect_to user_path(@user.id)
+    else
+      render users_edit_path
+    end
   end
 
   def destroy
