@@ -13,7 +13,8 @@ class UsersController < ApplicationController
       if @user.save
         # Tell the UsersMailer to send a welcome email after save
         UsersMailer.welcome_email(@user).deliver_now!
- 
+        session[:user_id] = @user.id
+        
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
