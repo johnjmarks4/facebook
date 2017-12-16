@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     session[:notifications][:friend_requests].map do |request|
       user = User.find(request.user_id)
       name = user.first_name + " " + user.last_name
-      ["#{name} added you", request.user_id]
+      ["#{name} added you", request.user_id, request.id]
     end
   end
 

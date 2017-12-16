@@ -46,7 +46,10 @@
                   <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
                   <div><%= f.submit "Accept", :class => "accept" %>
                 <% end %>
-                <%= link_to "Delete Request", friendships_delete_request_path(note[1]), :class => "button" %></div>
+                <%= form_tag friendships_delete_request_path, id: "delete_request" do %>
+                  <%= hidden_field_tag :id, note[2] %>
+                  <%= submit_tag "Delete request" %>
+                <% end %>
               <% end %>
             </li>
           <% end %>

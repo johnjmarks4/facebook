@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
   def add
     if FriendRequest.find_by(user_id: current_user.id, friend_id: params[:friend_id]) ||
        FriendRequest.find_by(user_id: params[:friend_id], friend_id: current_user.id)
-       
+
       redirect_back fallback_location: "/", notice: "Friend request already pending"
     else
       FriendRequest.create(user_id: current_user.id, 
@@ -31,6 +31,8 @@ class FriendshipsController < ApplicationController
   end
 
   def delete_request
+    FriendRequest.find(params[:id]).destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private
