@@ -25,13 +25,17 @@ class FriendshipsController < ApplicationController
         request.destroy
       end
     end
+    redirect_back fallback_location: "/", notice: "Friend request accepted"
   end
 
   def destroy
+    Friendship.where("user_id = ?", current_user.id).where("friend_id = ?", params[:friend_id]).or(Friendship.where("user_id = ?", params[:friend_id]).where("friend_id = ?", current_user.id)).first.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   def delete_request
     FriendRequest.find(params[:id]).destroy
+    flash[:notice] = "Friend deleted"
     redirect_back(fallback_location: root_path)
   end
 

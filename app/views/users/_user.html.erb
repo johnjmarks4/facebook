@@ -1,8 +1,15 @@
 <li>
   <%= gravatar_for user %>
   <%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %>
-    
-  <% if !friends?(user) %>
+  
+  <% if friends?(user) %>
+    <%= form_tag friendships_destroy_path do %>
+      <span id="delete_friend">
+        <%= hidden_field_tag(:friend_id, user.id) %>
+        <%= button_tag("Unfriend") %>
+      </span>
+    <% end %>
+  <% else %>
     <%= form_tag friendships_add_path do %>
       <span id="add_friend">
         <%= hidden_field_tag(:friend_id, user.id) %>

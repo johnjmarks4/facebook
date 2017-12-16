@@ -97,6 +97,8 @@ Rails.application.routes.draw do
 
   get 'friendships/destroy'
 
+  post 'friendships/destroy'
+
   get 'friendships/delete_request'
 
   post 'friendships/delete_request'
