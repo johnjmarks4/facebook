@@ -1,23 +1,33 @@
 <% provide(:title, @title) %>
 
 <div id="center_column">
-  <h1><%= @title %></h1>
+  <% if @users %>
+    <h1><%= @title %></h1>
 
-  <% @users = @users.paginate(:page => 1, :per_page => 10) %>
+    <% @users = @users.paginate(:page => 1, :per_page => 10) %>
 
-  <% if @users.length > 10 %>
-    <span class="users_list">
-      <%= will_paginate @users %>
-    </span>
-  <% end %>
+    <% if @users.length > 10 %>
+      <span class="users_list">
+        <%= will_paginate @users %>
+      </span>
+    <% end %>
 
-  <ul class="users">
-    <%= render @users %>
-  </ul>
+    <ul class="users">
+      <%= render @users %>
+    </ul>
 
-  <% if @users.length > 10 %>
-    <span class="users_list">
-      <%= will_paginate @users %>
-    </span>
+    <% if @users.length > 10 %>
+      <span class="users_list">
+        <%= will_paginate @users %>
+      </span>
+    <% end %>
+  <% else %>
+    <h1>No results found</h1>
+    <br>
+    <br>
+    <br>
+    <div id="failed_search_link">
+      <%= link_to "Back", :back %>
+    </div>
   <% end %>
 </div>
