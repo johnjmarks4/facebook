@@ -5,10 +5,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    
-    if !user_signed_in? && params[:user]
-      redirect_to root_path
-    end
+    super
   end
 
   # POST /resource/sign_in
