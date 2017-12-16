@@ -19,6 +19,8 @@
 
     <span class="flash">
       <%= flash[:alert].html_safe if flash[:alert] %>
+      <%= flash[:notice].html_safe if flash[:notice] %>
+      <%= flash[:error].html_safe if flash[:error] %>
     </span>
 
     <%= yield %>
