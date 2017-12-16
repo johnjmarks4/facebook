@@ -93,13 +93,58 @@
   border-left: none;
 }
 
+#right_menu {
+  float: right;
+  display: table-row;
+  padding: 0;
+  margin: 0;
+  left: 800px;
+  height: 42px;
+  width: 280px;
+  list-style-type: none;
+}
+
+#right_menu .right_options {
+  display: table-cell;
+  height: 42px;
+  vertical-align: middle;
+}
+
+#right_menu .right_options a {
+  vertical-align: middle;
+  height: 21px;
+}
+
+#right_menu img {
+  height: 40px;
+}
+
+#right_menu #gravatar_wrapper {
+  margin-right: 10px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 27px;
+}
+
+#right_menu #gravatar_wrapper #user_name {
+  margin-left: 3px;
+}
+
+#home_button img {
+  vertical-align: middle;
+  height: 27px;
+  width: 27px;
+  border-radius: 100%;
+  margin: 0;
+}
+
  /* Dropdown Button */
 .dropbtn {
   background-color: #4267b2;
   font-size: 16px;
   border: none;
   cursor: pointer;
-  padding: 1px 5.5px;
+  padding: 1px 0px;;
   vertical-align: middle;
 }
 
@@ -113,11 +158,16 @@
   opacity: 0.3;
 }
 
-/* The container <div> - needed to position the dropdown content */
+/* The container <li> - needed to position the dropdown content */
 .dropdown {
-  display: inline-block; 
-  height: 24px;
-  width: auto;
+  float: right;
+  position: relative;
+  display: table-cell;
+  margin-right: 144px;
+  bottom: 43px;
+  height: 43px;
+  width: 20px;
+  vertical-align: middle;
 }
 
 .dropdown img {
@@ -129,8 +179,8 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
-  position: absolute;
-  right: 95px;
+  position: relative;
+  right: 363px;
   width: 402px;
   max-height: 503px;
   background-color: rgb(255, 255, 255);
