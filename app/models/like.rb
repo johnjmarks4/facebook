@@ -1,5 +1,4 @@
 class Like < ApplicationRecord
-  before_create :add_like
   belongs_to :user
   belongs_to :post
 
@@ -12,11 +11,5 @@ class Like < ApplicationRecord
     likes = posts.map { |post| Like.where(post_id: post.id) }
     likes.reject! { |l| notification_history.include?(l) || l.empty? }
     likes
-  end
-
-  private
-  
-  def add_like
-    Post.update(@post_id, likes: Post.find(@post_id).likes + 1)
   end
 end
