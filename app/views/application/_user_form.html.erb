@@ -1,13 +1,13 @@
 <div class="name" id="first_name">
-  <%= f.text_field :first_name, value: first, onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
+  <%= f.text_field :first_name, value: first, onfocus: "inputFocus(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
 </div>
 
 <div class="name" id="last_name">
-  <%= f.text_field :last_name, value: last, onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
+  <%= f.text_field :last_name, value: last, onfocus: "inputFocus(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
 </div>
 
 <div class="field" id="email">
-  <%= f.email_field :email, value: email, onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
+  <%= f.email_field :email, value: email, onfocus: "inputFocus(this)", onblur: "inputBlur(this)", autocomplete: "off" %>
 </div>
 
 <div class="field">
