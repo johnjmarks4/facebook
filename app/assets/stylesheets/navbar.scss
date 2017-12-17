@@ -105,7 +105,9 @@
 }
 
 #right_menu .right_options {
-  display: table-cell;
+  position: absolute;
+  right: 206px;
+  display: inline-block;
   height: 42px;
   vertical-align: middle;
 }
@@ -115,11 +117,18 @@
   height: 21px;
 }
 
+#right_menu #friends_button {
+  position: relative;
+  left: 74px;
+}
+
 #right_menu img {
   height: 40px;
 }
 
 #right_menu #gravatar_wrapper {
+  position: relative;
+  top: 6px;
   margin-right: 10px;
   text-align: center;
   font-weight: bold;
@@ -163,8 +172,7 @@
   float: right;
   position: relative;
   display: table-cell;
-  margin-right: 144px;
-  bottom: 43px;
+  margin-right: 144px; 
   height: 43px;
   width: 20px;
   vertical-align: middle;
