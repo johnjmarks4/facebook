@@ -25,8 +25,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:own_comments]
-      session[:own_comments] = params[:own_comments]
+    if params[:posts_setting]
+      session[:posts_setting] = params[:posts_setting]
     end
 
     @browser = current_user
@@ -36,10 +36,14 @@ class UsersController < ApplicationController
     @like = Like.new
     @post = Post.new
 
-    if session[:own_comments] == "true" || @profile_owner != current_user
+    if session[:posts_setting] == "wall"
+      @posts = Post.wall_posts(params[:id])
+    elsif session[:posts_setting] == "timeline" && @profile_owner == current_user
+      @posts = Post.friends_posts(params[:id])
+    elsif session[:posts_setting] == "timeline" && @profile_owner != current_user
       @posts = Post.users_posts(params[:id])
     else
-      @posts = Post.friends_posts(params[:id])
+      @posts = Post.wall_posts(params[:id])
     end
   end
 

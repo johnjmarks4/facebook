@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 20171209010155) do
     t.string "text"
     t.integer "likes"
     t.string "poster_name"
-    t.bigint "user_id"
+    t.integer "poster_id"
+    t.integer "wall_id"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,5 +106,4 @@ ActiveRecord::Schema.define(version: 20171209010155) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "posts", "users"
 end

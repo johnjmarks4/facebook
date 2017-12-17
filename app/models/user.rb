@@ -6,9 +6,11 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
   has_many :friendships, :dependent => :destroy       
   has_many :friends, :through => :friendships, :dependent => :destroy
+  has_many :friend_requests, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :dependent => :destroy      
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user, :dependent => :destroy
-  has_many :posts, :dependent => :destroy
+  has_many :posts, :dependent => :destroy, :foreign_key => :poster_id
+  has_many :wall_posts, :dependent => :destroy, :class_name => "Post", :foreign_key => :wall_id
   has_many :comments, :dependent => :destroy
   has_many :likes, :dependent => :destroy
 
@@ -18,9 +20,11 @@ class User < ApplicationRecord
 
   validates_uniqueness_of    :email,     :case_sensitive => false, :allow_blank => false, :if => :email_changed?
   validates_format_of    :email,    :with  => Devise.email_regexp, :allow_blank => false, :if => :email_changed?
+  # Comment out these two lines to create users from the Rails Console
   validates_presence_of    :password, :on=>:create
   validates_confirmation_of    :password, :on=>:create
-  validates_length_of :password, :within => Devise.password_length, :allow_blank => false
+  # Set 'allow_blank' to true to create users from the Rails Console
+  validates_length_of :password, :within => Devise.password_length, :allow_blank => true
 
   def self.users_matching_name(name)
     first_name = name.split(" ")[0]

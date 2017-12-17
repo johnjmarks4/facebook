@@ -6,9 +6,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.poster_name = User.users_name(params[:post][:user_id])
+    @post.poster_name = User.users_name(params[:post][:poster_id])
     if @post.save
-      redirect_to user_path(current_user.id)
+      redirect_back(fallback_location: user_path(current_user.id))
     else
       flash[:notice] = "Your post was too long"
     end
@@ -46,6 +46,6 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:text, :user_id, :parent_id, :poster_name, :likes)
+      params.require(:post).permit(:text, :wall_id, :poster_id, :parent_id, :poster_name, :likes)
     end
 end

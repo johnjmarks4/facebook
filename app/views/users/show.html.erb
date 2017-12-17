@@ -31,7 +31,8 @@
         <div id="top_bar">
         </div>
         <%= form_for @post, url: posts_create_path do |f| %>
-          <%= f.hidden_field :user_id, value: @browser.id %>
+          <%= f.hidden_field :wall_id, value: @profile_owner.id %>
+          <%= f.hidden_field :poster_id, value: @browser.id %>
           <%= f.hidden_field :poster_name, value: @browser_name %>
           <%= f.hidden_field :likes, value: 0 %>
           <%= f.text_area :text, value: "What's on your mind?", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
@@ -40,12 +41,22 @@
         <% end %>
           <% if @profile_owner == current_user %>
             <%= form_tag user_path(params[:id]) do %>
-              <% if !session[:own_comments] || session[:own_comments] == "false" %>
-                <%= hidden_field_tag(:own_comments, "true") %>
-                <%= submit_tag "Show your own posts", class: :own_posts %>
-              <% elsif session[:own_comments] && session[:own_comments] = "true" %>
-                <%= hidden_field_tag(:own_comments, "false") %>
-                <%= submit_tag "Show your friends' posts", class: :own_posts %>
+              <% if !session[:posts_setting] || session[:posts_setting] == "timeline" %>
+                <%= hidden_field_tag(:posts_setting, "wall") %>
+                <%= submit_tag "Show your wall", class: :own_posts %>
+              <% elsif session[:posts_setting] && session[:posts_setting] = "wall" %>
+                <%= hidden_field_tag(:posts_setting, "timeline") %>
+                <%= submit_tag "Show your timeline", class: :own_posts %>
+              <% end %>
+            <% end %>
+          <% elsif @profile_owner != current_user %>
+            <%= form_tag user_path(params[:id]) do %>
+              <% if !session[:posts_setting] || session[:posts_setting] == "wall" %>
+                <%= hidden_field_tag(:posts_setting, "timeline") %>
+                <%= submit_tag "Show just user's posts", class: :own_posts %>
+              <% elsif session[:posts_setting] && session[:posts_setting] = "timeline" %>
+                <%= hidden_field_tag(:posts_setting, "wall") %>
+                <%= submit_tag "Show user's wall", class: :own_posts %>
               <% end %>
             <% end %>
           </div>
