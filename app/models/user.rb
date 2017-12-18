@@ -4,11 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:facebook]
-  has_many :friendships, :dependent => :destroy       
-  has_many :friends, :through => :friendships, :dependent => :destroy
+
+  has_many :friendships#, :dependent => :destroy       
+  has_many :friends, :through => :friendships#, :dependent => :destroy
+  has_many :inverse_friendships, :class_name => "Friendship"#, :foreign_key => "friend_id"#, :dependent => :destroy       
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user#, :dependent => :destroy
+
   has_many :friend_requests, :dependent => :destroy
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :dependent => :destroy      
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user, :dependent => :destroy
   has_many :posts, :dependent => :destroy, :foreign_key => :poster_id
   has_many :wall_posts, :dependent => :destroy, :class_name => "Post", :foreign_key => :wall_id
   has_many :comments, :dependent => :destroy

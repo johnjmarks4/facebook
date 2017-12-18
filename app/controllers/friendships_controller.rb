@@ -24,19 +24,22 @@ class FriendshipsController < ApplicationController
       if request
         request.destroy
       end
+      redirect_back fallback_location: "/", notice: "Friend request accepted"
+    else
+      redirect_back fallback_location: "/", notice: "Unable to add friend"
     end
-    redirect_back fallback_location: "/", notice: "Friend request accepted"
   end
 
   def destroy
-    Friendship.where("user_id = ?", current_user.id).where("friend_id = ?", params[:friend_id]).or(Friendship.where("user_id = ?", params[:friend_id]).where("friend_id = ?", current_user.id)).first.destroy
-    redirect_back(fallback_location: root_path)
+    Friendship.where(user_id: current_user.id, friend_id: params[:friend_id]).first.destroy
+    Friendship.where(user_id: params[:friend_id], friend_id: current_user.id).first.destroy
+    redirect_back fallback_location: user_path(current_user.id), notice: "Friend deleted"
   end
 
   def delete_request
     FriendRequest.find(params[:id]).destroy
-    flash[:notice] = "Friend deleted"
-    redirect_back(fallback_location: root_path)
+    flash[:notice] = "Friend request rejected"
+    redirect_back fallback_location: user_path(current_user.id), notice: "Friend request rejected"
   end
 
   private
