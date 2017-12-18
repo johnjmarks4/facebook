@@ -46,13 +46,11 @@ Rails.application.routes.draw do
 
     resources :users, :only => [:new, :create, :index]
 
-    get 'users/sign_out' => 'users/sessions#destroy'
+    delete 'users/sign_out' => 'users/sessions#destroy'
 
     get 'users/sign_in' => 'users/sessions#new'
 
     post 'users/index' => 'users#index'
-
-    get 'users/sign_in' => 'users/sessions#create'
 
     post 'users/sign_in' => 'users/sessions#create'
 
@@ -62,13 +60,13 @@ Rails.application.routes.draw do
 
     get 'users/auth/:provider', to: 'users/sessions#create'
 
+    get 'users/sign_in' => 'users/sessions#create'
+
     get 'users/auth/facebook/callback', to: 'users/omniauth_callbacks#facebook'
 
     get 'auth/failure', to: redirect('/')
 
     get 'auth/facebook', to: 'users/omniauth_callbacks#passthru'
-
-    get 'signout', to: 'users/sessions#destroy', as: 'signout'
 
     #delete 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
 

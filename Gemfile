@@ -10,7 +10,7 @@ gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 #gem 'oauth2'
 #gem 'devise_token_auth'
 #gem 'omniauth'
-gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-facebook'
 #gem 'omniauth-oauth2'
 gem 'devise'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'

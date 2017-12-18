@@ -19,7 +19,7 @@ class Post < ApplicationRecord
 
     ids.each do |relation|
       Post.where(poster_id: relation[:user_id]).each do |post|
-        unless post.poster_id == user_id.to_i
+        unless post.poster_id == user_id.to_i && post.parent_id.nil?
           posts << post
         end
       end
