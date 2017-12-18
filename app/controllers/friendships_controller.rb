@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
       FriendRequest.create(user_id: current_user.id, 
                            friend_id: params[:friend_id],
                            user_name: "#{current_user.first_name} #{current_user.last_name}")
-      redirect_back fallback_location: "/", notice: "Friend request sent"
+      redirect_back fallback_location: user_path(current_user.id), notice: "Friend request sent"
     end
   end
 
@@ -24,9 +24,9 @@ class FriendshipsController < ApplicationController
       if request
         request.destroy
       end
-      redirect_back fallback_location: "/", notice: "Friend request accepted"
+      redirect_back fallback_location: user_path(current_user.id), notice: "Friend request accepted"
     else
-      redirect_back fallback_location: "/", notice: "Unable to add friend"
+      redirect_back fallback_location: user_path(current_user.id), notice: "Unable to add friend"
     end
   end
 

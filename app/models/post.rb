@@ -15,11 +15,13 @@ class Post < ApplicationRecord
   def self.friends_posts(user_id)
     posts = []
 
-    ids = Friendship.select("id, user_id").where(friend_id: user_id)
+    ids = Friendship.select("id, user_id").where(friend_id: user_id).or(Friendship.select("id, user_id").where(user_id: user_id))
 
     ids.each do |relation|
       Post.where(poster_id: relation[:user_id]).each do |post|
-        posts << post
+        unless post.poster_id == user_id.to_i
+          posts << post
+        end
       end
     end
 
