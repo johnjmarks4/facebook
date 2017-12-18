@@ -10,7 +10,7 @@
 
     <div class="login_options">
       Signed in as: <%= current_user.email %>
-      <%= link_to "Sign out",  destroy_user_session_path %>
+      <%= link_to "Sign out",  destroy_user_session_path(current_user.id), method: "DELETE" %>
       <%= link_to "All users", users_list_path %>
     </div>
 
