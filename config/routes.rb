@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   post 'posts/like'
 
   post 'friendships/new'
-  get 'friendships/delete_request'
   post 'friendships/delete_request'
 
   resources :posts

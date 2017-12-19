@@ -39,7 +39,7 @@
             <li>
               <%= note[0] %>
               <% if note[1] %>
-                <%= form_for @friendship, url: friendships_create_path do |f| %>
+                <%= form_for @friendship do |f| %>
                   <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
                   <div><%= f.submit "Accept", :class => "accept" %>
                 <% end %>

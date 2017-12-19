@@ -105,7 +105,7 @@ a:hover + #users_who_liked ul {
   font-size: 80%;
 }
 
-#wall .gravatar {
+.user_post .gravatar {
   position: relative;
   display: inline-block;
   top: 0px;
@@ -116,18 +116,18 @@ a:hover + #users_who_liked ul {
   border-radius: 100%;
 }
 
-#wall form {
+.user_post form {
   position: relative;
 }
 
-#wall .poster_name {
+.user_post .poster_name {
   position: relative;
   display: inline;
   bottom: 24px;
   height: 16px;
 }
 
-#wall .poster_name a {
+.user_post .poster_name a {
   color: #365899;
   font-size: 87%;
   font-weight: bold;
