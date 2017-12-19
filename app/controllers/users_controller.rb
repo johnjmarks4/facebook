@@ -77,20 +77,32 @@ class UsersController < ApplicationController
   end
 
   def update
+    user_params
     @user = User.find(params[:id])
-    @user.update_attributes(user_params)
-    if @user
+
+    if params[:user][:password].blank? || params[:user][:password][0..8] == "Password"
+      if @user.update_without_password(user_params.except(:password, :password_confirmation))
+        flash[:notice] = "Account updated"
+        redirect_to user_path(@user.id)
+      else
+        flash[:notice] = "Update failed"
+        render edit_user_registration_path(@user.id)
+      end
+    elsif @user.update_attributes(user_params)
+      bypass_sign_in @user, scope: :user
+      flash[:notice] = "Account updated"
       redirect_to user_path(@user.id)
     else
-      render users_edit_path
+      flash[:notice] = "Update failed"
+      render edit_user_registration_path(@user.id)
     end
   end
 
   def destroy
-    User.find(params[:format]).destroy
+    User.find(params[:id]).destroy
     session[:user_id] = nil
     flash[:notice] = "Your account has been deleted"
-    redirect_to users_sign_up_path
+    redirect_to root_path
   end
 
   def self.from_omniauth(auth)

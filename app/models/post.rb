@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :poster, :class_name => "User"
   belongs_to :wall, :class_name => "User"
   has_many :comments, :dependent => :destroy, :foreign_key => "parent_id"
+  has_many :likes, :dependent => :destroy
 
   def self.users_posts(user_id)
     Post.where(poster_id: user_id).order(created_at: :desc)
