@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = [Post.find(params[:format])]
+    @posts = [Post.find(params[:id])]
   end
 
   def edit
@@ -31,7 +31,6 @@ class PostsController < ApplicationController
 
   def like
     post = Post.find(params[:post_id])
-    puts post.inspect
     Post.update(post.id, likes: post.likes + 1)
     like = Like.new(post_id: params[:post_id], user_id: params[:user_id])
     like.assign_post_id_from_controller(params[:post_id])

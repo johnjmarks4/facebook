@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
         like = like.first
         user = User.find(like.user_id)
         name = user.first_name + " " + user.last_name
-        "#{name} liked your #{view_context.link_to 'post', posts_show_path(like.post_id)}".html_safe
+        "#{name} liked your #{view_context.link_to 'post', post_path(like.post_id)}".html_safe
       end
     end
   end
