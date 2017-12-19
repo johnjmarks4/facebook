@@ -14,10 +14,10 @@
           <p>Profile Options</p>
           <ul>
             <li>
-              <%= link_to "Edit", users_edit_path(@browser.id) %>
+              <%= link_to "Edit", edit_user_registration_path(@browser.id) %>
             </li>
             <li>
-              <%= link_to "Delete", users_destroy_path(@browser.id), data: { confirm: "Are you sure?" } %>  
+              <%= link_to "Delete", user_path(@browser.id), method: "DELETE", data: { confirm: "Are you sure?" } %>  
             </li>
           </ul>
         </div>
@@ -30,7 +30,7 @@
       <div id="post_field">
         <div id="top_bar">
         </div>
-        <%= form_for @post, url: posts_create_path do |f| %>
+        <%= form_for @post, url: posts_path do |f| %>
           <%= f.hidden_field :wall_id, value: @profile_owner.id %>
           <%= f.hidden_field :poster_id, value: @browser.id %>
           <%= f.hidden_field :poster_name, value: @browser_name %>

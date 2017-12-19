@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   
-  def add
+  def new
     if FriendRequest.find_by(user_id: current_user.id, friend_id: params[:friend_id]) ||
        FriendRequest.find_by(user_id: params[:friend_id], friend_id: current_user.id)
 
