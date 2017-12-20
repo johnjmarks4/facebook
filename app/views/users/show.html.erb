@@ -34,7 +34,7 @@
           <%= f.hidden_field :wall_id, value: @profile_owner.id %>
           <%= f.hidden_field :poster_id, value: @browser.id %>
           <%= f.hidden_field :poster_name, value: @browser_name %>
-          <%= f.hidden_field :likes, value: 0 %>
+          <%= f.hidden_field :number_of_likes, value: 0 %>
           <%= f.text_area :text, value: "What's on your mind?", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
           <div id="bottom_bar">
             <%= f.submit "Submit", :class => "button" %>

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20171209010155) do
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
-    t.integer "likes"
+    t.integer "number_of_likes"
     t.string "poster_name"
     t.bigint "user_id"
     t.integer "parent_id"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20171209010155) do
 
   create_table "posts", force: :cascade do |t|
     t.string "text"
-    t.integer "likes"
+    t.integer "number_of_likes"
     t.string "poster_name"
     t.integer "poster_id"
     t.integer "wall_id"

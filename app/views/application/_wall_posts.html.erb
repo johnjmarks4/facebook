@@ -8,8 +8,8 @@
       <%= post.text %><br>
     </div>
     <div class="post_likes">
-      <% if post.likes && post.likes > 0 %>
-        <%= link_to "#{post.likes} likes" %>
+      <% if post.number_of_likes && post.number_of_likes > 0 %>
+        <%= link_to "#{post.number_of_likes} likes" %>
         <div id="users_who_liked">
           <ul>
             <% find_likers(post.id).each do |name| %>
@@ -46,7 +46,7 @@
             <%= comment.text %>
           </div>
           <div class="post_likes">
-            <%= comment.likes %>
+            <%= comment.number_of_likes %>
           </div>
         </div>
       <% end %>

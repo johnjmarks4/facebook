@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   
   def new
-    redirect_to comments_path comment: { text: params[:text], user_id: params[:user_id], parent_id: params[:post_id] }
+    redirect_to comments_path comment: { text: params[:text], 
+                                         user_id: params[:user_id], 
+                                         parent_id: params[:post_id] }
   end
 
   def create
@@ -17,6 +19,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text, :user_id, :parent_id, :poster_name, :likes)
+    params.require(:comment).permit(:text, :user_id, :parent_id, :poster_name, :number_of_likes)
   end
 end

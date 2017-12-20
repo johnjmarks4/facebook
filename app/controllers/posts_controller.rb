@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def like
     post = Post.find(params[:post_id])
-    Post.update(post.id, likes: post.likes + 1)
+    Post.update(post.id, number_of_likes: post.number_of_likes + 1)
     like = Like.new(post_id: params[:post_id], user_id: params[:user_id])
     like.assign_post_id_from_controller(params[:post_id])
     like.save
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:text, :wall_id, :poster_id, :parent_id, :poster_name, :likes)
-    end
+  def post_params
+    params.require(:post).permit(:text, :wall_id, :poster_id, :parent_id, :poster_name, :number_of_likes)
+  end
 end
