@@ -13,6 +13,12 @@
   z-index: 1;
 }
 
+#navbar #logo {
+  width: 190px;
+  margin-top: 10px;
+  margin-left: 55px;
+}
+
 .spacer {
   height: 82px;
 }
@@ -91,7 +97,36 @@
 }
 
 p {
-  margin-bottom: 5px;
+  display: inline-block;
+  width: 400px;
+  margin-left: 180px;
+  margin-top: 0;
+  text-align: justify;
+}
+
+#headline {
+  display: inline-block;
+  height: 100px;
+  width: 100%;
+}
+
+#headline #right {
+  float: right;
+}
+
+#headline #left {
+  margin-left: 180px;
+}
+
+h2 {
+  display: inline-block;
+  margin-right: 180px;
+  margin-bottom: 0;
+  font-size: 38px;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif !important;
+  font-weight: bold !important;
+  letter-spacing: normal;
+  text-rendering: optimizelegibility;
 }
 
 #facebook_login {
@@ -99,7 +134,7 @@ p {
   font-weight: bold !important;
   letter-spacing: normal;
   text-rendering: optimizelegibility;
-  min-width: 194px;
+  width: 194px;
   min-height: 23.5px;
   padding: 7px 0px;
   text-align: center;
@@ -121,8 +156,8 @@ p {
 }
 
 #facebook_login a {
-  display: block;
-  margin: auto 15px;
+  width: 100%;
+  margin: 0;
   text-decoration: none;
   color: #fff;
   line-height: 23.5px;

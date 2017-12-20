@@ -1,6 +1,15 @@
 <div id="headline">
-  <h2>Create a New Account</h2>
+  <h2 id="left">Welcome</h2>
+
+  <h2 id="right">Create a New Account</h2>
 </div>
+
+<p id="welcome_message">Welcome to Fauxbook, Facebook’s weird doppleganger. Here you can make posts, write on other users' walls, and add friends.   <br><br><br>
+
+Just fill in the information on the right to get started.   <br><br><br>
+
+To learn about some of the problems that had to be solved in creating this project, 
+click <%= link_to "here", root_path %></p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: "basic_form" }) do |f| %>
   <%= devise_error_messages! %>

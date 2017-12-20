@@ -78,9 +78,11 @@
 
   <% if !user_signed_in? %>
 
-  <div id="log_in">
-    <%= render "devise/sessions/new" %>
-  </div>
+    <%= image_tag("logo", id: "logo")  %>
+
+    <div id="log_in">
+      <%= render "devise/sessions/new" %>
+    </div>
 
   <% end %>
 
