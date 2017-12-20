@@ -32,16 +32,18 @@
       <li class="dropdown">
         <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
         <div id="myDropdown" class="dropdown-content">
+
         <ul>
-        <% if @friend_requests %>
+
           <div id="fr_heading">Friend Requests</div>
-          <% @friend_requests.each do |note| %>
+          <% if @friend_requests && !@friend_requests.empty? %>
+            <% @friend_requests.each do |note| %>
             <li>
               <%= note[0] %>
               <% if note[1] %>
                 <%= form_for @friendship do |f| %>
                   <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
-                  <div><%= f.submit "Accept", :class => "accept" %>
+                  <div><%= f.submit "Accept", :class => "accept" %></div>
                 <% end %>
                 <%= form_tag friendships_delete_request_path, id: "delete_request" do %>
                   <%= hidden_field_tag :id, note[2] %>
@@ -49,16 +51,25 @@
                 <% end %>
               <% end %>
             </li>
-          <% end %>
-        <% end %>
-        <% if @likes %>
-          <div id="likes_heading">Likes</div>
-          <% @likes.each do |like| %>
+            <% end %>
+          <% else %>
             <li>
-              <%= like %>
+              <%= "No new friend requests" %>
             </li>
           <% end %>
-        <% end %>
+
+          <div id="likes_heading">Likes</div>
+          <% if @likes && !@likes.empty? %>
+            <% @likes.each do |like| %>
+              <li>
+                <%= like %>
+              </li>
+            <% end %>
+          <% else %>
+            <li>
+              <%= "No new likes" %>
+            </li>
+          <% end %>
         </ul>
         </div>
       </li>

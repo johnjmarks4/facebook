@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
       @friendship = Friendship.new
       @friend_requests = get_friend_requests
       @likes = get_likes
+      puts "ran3"
+      puts @likes.inspect
     end
   end
 
@@ -40,8 +42,7 @@ class ApplicationController < ActionController::Base
     session[:notifications][:likes] << new_likes
 
     if !new_likes.empty?
-      new_likes.map do |like|
-        like = like.first
+      new_likes[0].map do |like|
         user = User.find(like.user_id)
         name = user.first_name + " " + user.last_name
         "#{name} liked your #{view_context.link_to 'post', post_path(like.post_id)}".html_safe
