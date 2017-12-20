@@ -43,8 +43,10 @@ class UsersController < ApplicationController
     elsif session[:posts_setting] == "timeline" && @profile_owner != current_user
       @posts = Post.users_posts(params[:id])
     elsif @profile_owner == current_user
+      session[:posts_setting] = "timeline"
       @posts = Post.friends_posts(params[:id])
     else
+      session[:posts_setting] = "wall"
       @posts = Post.wall_posts(params[:id])
     end
   end

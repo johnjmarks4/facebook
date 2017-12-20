@@ -1,13 +1,37 @@
-<% if @posts.empty? %>
+<% if @posts.empty? && session[:posts_setting] == "wall" %>
   <div id="no_posts_message" class="message_box">
     <div class="arrow_box"></div>
     <div class="message_text">
-      <%= "#{@profile_owner.first_name} has no posts on their wall." %> 
-      <br>
-      <%= "Write them one in the box above!" %>
+      <% if @profile_owner == current_user %>
+        <%= "You have no posts on your wall." %>   <br>
+        <%= "Write something in the box above!" %>
+      <% else %>
+        <%= "#{@profile_owner.first_name} has no posts on their wall." %>   <br>
+        <%= "Write them one in the box above!" %>
+      <% end %>
     </div>
   </div>
 
+<% elsif @posts.empty? && session[:posts_setting] == "timeline" %>
+  <% if @profile_owner == current_user %>
+    <div id="empty_timeline_message" class="message_box">
+      <div class="arrow_box"></div>
+      <div class="message_text">
+        <%= "Your timeline is empty." %>   <br>
+        <%= "Search for friends to fill it up!" %>
+      </div>
+      </div>
+    </div>
+  <% else %>
+    <div id="user_has_no_posts_message" class="message_box">
+      <div class="arrow_box"></div>
+      <div class="message_text">
+        <%= "#{@profile_owner.first_name} has not written any posts." %>   <br>
+        <%= "Write them a message and see if they comment on it!" %>
+      </div>
+      </div>
+    </div>
+  <% end %>
 <% else %>
 
   <% @posts.each_with_index do |post, i| %>

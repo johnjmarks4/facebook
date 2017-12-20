@@ -14,24 +14,46 @@ html, body {
   top: 70px;
 }
 
-.message_box {
-  display: table;
+#empty_timeline_message {
+  position: relative;
+  bottom: 275px;
+  width: 60%;
+  left: 5px;
+}
+
+#user_has_no_posts_message {
   position: relative;
   float: right;
   margin-top: 10px;
   left: 15px;
   height: 70px;
   width: 60%;
+}
+
+#no_posts_message {
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  left: 15px;
+  height: 70px;
+  width: 60%;
+}
+
+.message_box {
+  float: right;
+  display: table;
   background-color: #4080ff;
   color: white;
   text-align: left;
   padding-left: 10px;
   border-radius: 3px;
+  z-index: 2;
 }
 
 .message_box .message_text {
   display: table-cell;
   padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 15px;
 }
 
