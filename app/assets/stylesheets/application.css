@@ -13,3 +13,44 @@ html, body {
   left: 425px;
   top: 70px;
 }
+
+.message_box {
+  display: table;
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  left: 15px;
+  height: 70px;
+  width: 60%;
+  background-color: #4080ff;
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+  border-radius: 3px;
+}
+
+.message_box .message_text {
+  display: table-cell;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.arrow_box {
+  position: relative;
+  background: #4080ff;
+}
+
+.arrow_box:after {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(64, 128, 255, 0);
+  border-bottom-color: #4080ff;
+  border-width: 15px;
+  margin-left: 250px;
+}
