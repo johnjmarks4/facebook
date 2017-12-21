@@ -14,49 +14,6 @@ html, body {
   top: 70px;
 }
 
-#empty_timeline_message {
-  position: relative;
-  bottom: 275px;
-  width: 60%;
-  left: 5px;
-}
-
-#user_has_no_posts_message {
-  position: relative;
-  float: right;
-  margin-top: 10px;
-  left: 15px;
-  height: 70px;
-  width: 60%;
-}
-
-#no_posts_message {
-  position: relative;
-  float: right;
-  margin-top: 10px;
-  left: 15px;
-  height: 70px;
-  width: 60%;
-}
-
-.message_box {
-  float: right;
-  display: table;
-  background-color: #4080ff;
-  color: white;
-  text-align: left;
-  padding-left: 10px;
-  border-radius: 3px;
-  z-index: 2;
-}
-
-.message_box .message_text {
-  display: table-cell;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 15px;
-}
-
 .arrow_box {
   position: relative;
   background: #4080ff;
@@ -74,5 +31,45 @@ html, body {
   border-color: rgba(64, 128, 255, 0);
   border-bottom-color: #4080ff;
   border-width: 15px;
-  margin-left: 250px;
+  margin-left: 150px;
+}
+
+.message_box {
+  float: right;
+  display: table;
+  overflow: auto;
+  background-color: #4080ff;
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 20px;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.message_box .message_text {
+  display: table-cell;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+#empty_timeline_message {
+  position: relative;
+  bottom: 275px;
+  left: 30px;
+}
+
+#user_has_no_posts_message {
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  left: 45px;
+}
+
+#no_posts_message {
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  left: 45px;
 }

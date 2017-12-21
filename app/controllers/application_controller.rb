@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
       @friendship = Friendship.new
       @friend_requests = get_friend_requests
       @likes = get_likes
-      puts "ran3"
-      puts @likes.inspect
     end
   end
 

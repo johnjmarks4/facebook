@@ -41,20 +41,20 @@
         <% end %>
           <% if @profile_owner == current_user %>
             <%= form_tag user_path(params[:id]) do %>
-              <% if !session[:posts_setting] || session[:posts_setting] == "timeline" %>
+              <% if session[:posts_setting] == "timeline" %>
                 <%= hidden_field_tag(:posts_setting, "wall") %>
                 <%= submit_tag "Show your wall", class: :own_posts %>
-              <% elsif session[:posts_setting] && session[:posts_setting] = "wall" %>
+              <% elsif session[:posts_setting] == "wall" %>
                 <%= hidden_field_tag(:posts_setting, "timeline") %>
                 <%= submit_tag "Show your timeline", class: :own_posts %>
               <% end %>
             <% end %>
           <% elsif @profile_owner != current_user %>
             <%= form_tag user_path(params[:id]) do %>
-              <% if !session[:posts_setting] || session[:posts_setting] == "wall" %>
-                <%= hidden_field_tag(:posts_setting, "timeline") %>
+              <% if session[:posts_setting] == "wall" %>
+                <%= hidden_field_tag(:posts_setting, "users") %>
                 <%= submit_tag "Show just user's posts", class: :own_posts %>
-              <% elsif session[:posts_setting] && session[:posts_setting] = "timeline" %>
+              <% elsif session[:posts_setting] = "users" %>
                 <%= hidden_field_tag(:posts_setting, "wall") %>
                 <%= submit_tag "Show user's wall", class: :own_posts %>
               <% end %>

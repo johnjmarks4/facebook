@@ -25,30 +25,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:posts_setting]
-      session[:posts_setting] = params[:posts_setting]
-    end
-
     @browser = current_user
     @browser_name = "#{current_user.first_name} #{current_user.last_name}"
     @profile_owner = User.find(params[:id])
     @profile_owner_name = "#{@profile_owner.first_name} #{@profile_owner.last_name}"
     @like = Like.new
     @post = Post.new
-
-    if session[:posts_setting] == "wall"
-      @posts = Post.wall_posts(params[:id])
-    elsif session[:posts_setting] == "timeline" && @profile_owner == current_user
-      @posts = Post.friends_posts(params[:id])
-    elsif session[:posts_setting] == "timeline" && @profile_owner != current_user
-      @posts = Post.users_posts(params[:id])
-    elsif @profile_owner == current_user
-      session[:posts_setting] = "timeline"
-      @posts = Post.friends_posts(params[:id])
-    else
-      session[:posts_setting] = "wall"
-      @posts = Post.wall_posts(params[:id])
-    end
+    @posts = toggle_timeline_and_wall
   end
 
   def search
@@ -122,5 +105,17 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def toggle_timeline_and_wall
+    if params[:posts_setting]
+      session[:posts_setting] = params[:posts_setting]
+    elsif @profile_owner == current_user
+      session[:posts_setting] = "timeline"
+    else
+      session[:posts_setting] = "wall"
+    end
+
+    Post.send "#{session[:posts_setting]}_posts", params[:id]
   end
 end
