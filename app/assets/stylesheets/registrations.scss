@@ -162,3 +162,59 @@ h2 {
   color: #fff;
   line-height: 23.5px;
 }
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+  #navbar {
+    height: 132px;
+    padding-left: 0;
+  }
+
+  #logo {
+    display: none;
+  }
+
+  #log_in {
+    float: none;
+    margin: auto;
+    width: 95%;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  #log_in #labels td {
+    font-size: 25px;
+  }
+
+  #log_in #user_email {
+    height: 50px;
+    width: 271px;
+    font-size: 25px;
+  }
+
+  #log_in #user_password {
+    height: 50px;
+    width: 271px;
+    font-size: 25px;
+  }
+
+  #log_in #log_in_button input {
+    height: 58px;
+    width: 110px;
+    font-size: 20px;
+  }
+
+  #log_in #remember_me input {
+    height: 50px;
+    width: 50px;
+  }
+}
