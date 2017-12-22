@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery# with: :exception
   before_action :authenticate_user!
+  before_action :signed_in?
   before_action :refresh_notifications
 
   def after_sign_in_path_for(resource_or_scope)
@@ -20,6 +21,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def signed_in?(scope=nil)
+    [scope || Devise.mappings.keys].flatten.any? do |_scope|
+      if !warden.authenticate?(scope: _scope)
+        flash[:notice] = "You must be signed in to view that page"
+        redirect_to root_path 
+      end
+    end
+  end
   
   def current_user
     @current_user ||= User.find(session[:user_id]) if !session[:user_id].nil?
