@@ -78,10 +78,16 @@
 
   <% if !user_signed_in? %>
 
-    <%= image_tag("logo", id: "logo") %>
+    <div id="navbar_reg_container">
+      <div id="navbar_l_box">
+        <%= image_tag("logo", id: "logo") %>
+      </div>
 
-    <div id="log_in">
-      <%= render "devise/sessions/new" %>
+      <div id="navbar_r_box">
+        <div id="log_in">
+          <%= render "devise/sessions/new" %>
+        </div>
+      </div>
     </div>
 
   <% end %>
