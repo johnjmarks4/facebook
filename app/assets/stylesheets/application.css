@@ -44,7 +44,7 @@ html, body {
   padding-left: 10px;
   padding-right: 20px;
   border-radius: 3px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .message_box .message_text {
@@ -55,9 +55,9 @@ html, body {
 }
 
 #empty_timeline_message {
-  position: relative;
-  bottom: 275px;
-  left: 30px;
+  position: fixed;
+  bottom: 532px;
+  left: 710px;
 }
 
 #user_has_no_posts_message {

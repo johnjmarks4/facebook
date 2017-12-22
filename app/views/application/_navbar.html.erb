@@ -1,20 +1,38 @@
-<div id="navbar">
-  
-  <% if user_signed_in? %>
-    <div id="searchbar">
-      <%= form_tag users_search_path do %>
-        <%= text_field_tag :name, nil, :class => "text_field" %>
-        <%= submit_tag "", :class => "button" %>
-      <% end %>
-    </div>
+<div id="navbar_parent">
+  <div id="navbar">
+    
+    <% if user_signed_in? %>
+      <div id="searchbar">
+        <%= form_tag users_search_path do %>
+          <%= text_field_tag :name, nil, :class => "text_field" %>
+          <%= submit_tag "", :class => "button" %>
+        <% end %>
+      </div>
 
-    <div class="login_options">
-      Signed in as: <%= current_user.email %>
-      <%= link_to "Sign out",  destroy_user_session_path(current_user.id), method: "DELETE" %>
-      <%= link_to "All users", users_list_path %>
-    </div>
+      <div class="login_options">
+        Signed in as: <%= current_user.email %>
+        <%= link_to "Sign out",  destroy_user_session_path(current_user.id), method: "DELETE" %>
+        <%= link_to "All users", users_list_path %>
+      </div>
 
-    <ul id="right_menu">
+    <% if !user_signed_in? %>
+
+      <div id="navbar_reg_container">
+        <div id="navbar_l_box">
+          <%= image_tag("logo", id: "logo") %>
+        </div>
+
+        <div id="navbar_r_box">
+          <div id="log_in">
+            <%= render "devise/sessions/new" %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <ul id="right_menu">
   
       <li class="right_options">
         <div id="gravatar_wrapper">
@@ -76,23 +94,7 @@
     <% end %>
   <ul>
 
-  <% if !user_signed_in? %>
-
-    <div id="navbar_reg_container">
-      <div id="navbar_l_box">
-        <%= image_tag("logo", id: "logo") %>
-      </div>
-
-      <div id="navbar_r_box">
-        <div id="log_in">
-          <%= render "devise/sessions/new" %>
-        </div>
-      </div>
-    </div>
-
-  <% end %>
-
-</div>
-<div class="spacer">
-  &nbsp;
+  <div class="spacer">
+    &nbsp;
+  </div>
 </div>

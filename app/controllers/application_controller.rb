@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     [scope || Devise.mappings.keys].flatten.any? do |_scope|
       if !warden.authenticate?(scope: _scope)
         flash[:notice] = "You must be signed in to view that page"
-        redirect_to root_path 
+        redirect_to root_path
       end
     end
   end

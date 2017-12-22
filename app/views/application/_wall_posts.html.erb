@@ -2,6 +2,9 @@
   <% if session[:posts_setting] == "wall" %>
     <div id="no_posts_message" class="message_box">
       <div class="arrow_box"></div>
+      <div class="divbutton">
+        <button type="button" style="display: none;" id="i" onclick="document.body.removeChild(this.parentNode)">Hello</button>
+      </div>
       <div class="message_text">
         <% if @profile_owner == current_user %>
           <%= "You have no posts on your wall." %>   <br>
@@ -17,6 +20,9 @@
     <% if @profile_owner == current_user %>
       <div id="empty_timeline_message" class="message_box">
         <div class="arrow_box"></div>
+        <div class="divbutton">
+          <button type="button" style="display: none;" id="i" onclick="document.body.removeChild(this.parentNode)">Hello</button>
+        </div>
         <div class="message_text">
           <%= "Your timeline is empty." %>   <br>
           <%= "Search for friends to fill it up!" %>
@@ -28,6 +34,9 @@
   <% elsif session[:posts_setting] == "users" %>
     <div id="user_has_no_posts_message" class="message_box">
       <div class="arrow_box"></div>
+      <div class="divbutton">
+        <button type="button" style="display: none;" id="i" onclick="document.body.removeChild(this.parentNode)">Hello</button>
+      </div>
       <div class="message_text">
         <%= "#{@profile_owner.first_name} has not written any posts." %>   <br>
         <%= "Write them a message and see if " %>   <br>
