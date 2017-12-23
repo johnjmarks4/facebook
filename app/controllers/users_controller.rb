@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @title = "Search Results"
     if params[:name]
       @friends = current_user.friends
-      @users = User.users_matching_name(params[:name])
+      @users = User.find_user_named(params[:name])
     end
     render users_search_path
   end

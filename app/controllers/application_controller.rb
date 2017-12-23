@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
 
     if current_user
       @friendship = Friendship.new
-      @friend_requests = get_friend_requests
-      @likes = get_likes
+      @friend_requests = find_friend_requests
+      @likes = find_likes
     end
   end
 
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def get_friend_requests
+  def find_friend_requests
     session[:notifications][:friend_requests] = FriendRequest.refresh_friend_requests(current_user)
     session[:notifications][:friend_requests].map do |request|
       user = User.find(request.user_id)
@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_likes
+  def find_likes
     new_likes = Like.refresh_likes(current_user, session[:notifications][:likes])
     session[:notifications][:likes] << new_likes
 

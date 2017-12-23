@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.poster_name = User.users_name(params[:post][:poster_id])
+    @post.poster_name = User.find_name(params[:post][:poster_id])
     if @post.save
       redirect_back(fallback_location: user_path(current_user.id))
     else
