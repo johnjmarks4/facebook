@@ -15,7 +15,7 @@
         <%= link_to "All users", users_list_path %>
       </div>
 
-    <% if !user_signed_in? %>
+    <% else %>
 
       <div id="navbar_reg_container">
         <div id="navbar_l_box">
@@ -28,71 +28,72 @@
           </div>
         </div>
       </div>
-
     <% end %>
   </div>
 
-  <ul id="right_menu">
-  
-      <li class="right_options">
-        <div id="gravatar_wrapper">
-          <%= link_to gravatar_for(current_user), user_path(current_user.id), id: "home_button" %>
-          <span id="user_name">
-            <%= current_user.first_name %>
-          </span>
-        </div>
-      </li>
+  <% if user_signed_in? %>
+    <ul id="right_menu">
+    
+        <li class="right_options">
+          <div id="gravatar_wrapper">
+            <%= link_to gravatar_for(current_user), user_path(current_user.id), id: "home_button" %>
+            <span id="user_name">
+              <%= current_user.first_name %>
+            </span>
+          </div>
+        </li>
 
-      <li class="right_options" id="friends_button">
-        <%= link_to image_tag("friends"), users_friends_path %>
-      </li>
+        <li class="right_options" id="friends_button">
+          <%= link_to image_tag("friends"), users_friends_path %>
+        </li>
 
-      <li class="dropdown">
-        <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
-        <div id="myDropdown" class="dropdown-content">
+        <li class="dropdown">
+          <button onclick="myFunction()" class="dropbtn"><div><%= image_tag("notifications") %></div></button>
+          <div id="myDropdown" class="dropdown-content">
 
-        <ul>
+          <ul>
 
-          <div id="fr_heading">Friend Requests</div>
-          <% if @friend_requests && !@friend_requests.empty? %>
-            <% @friend_requests.each do |note| %>
-            <li>
-              <%= note[0] %>
-              <% if note[1] %>
-                <%= form_for @friendship do |f| %>
-                  <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
-                  <div><%= f.submit "Accept", :class => "accept" %></div>
-                <% end %>
-                <%= form_tag friendships_delete_request_path, id: "delete_request" do %>
-                  <%= hidden_field_tag :id, note[2] %>
-                  <%= submit_tag "Delete request" %>
-                <% end %>
+            <div id="fr_heading">Friend Requests</div>
+            <% if @friend_requests && !@friend_requests.empty? %>
+              <% @friend_requests.each do |note| %>
+                <li>
+                  <%= note[0] %>
+                  <% if note[1] %>
+                    <%= form_for @friendship do |f| %>
+                      <div><%= f.hidden_field :friend_id, :value => note[1] %></div>
+                      <div><%= f.submit "Accept", :class => "accept" %></div>
+                    <% end %>
+                    <%= form_tag friendships_delete_request_path, id: "delete_request" do %>
+                      <%= hidden_field_tag :id, note[2] %>
+                      <%= submit_tag "Delete request" %>
+                    <% end %>
+                  <% end %>
+                </li>
               <% end %>
-            </li>
-            <% end %>
-          <% else %>
-            <li>
-              <%= "No new friend requests" %>
-            </li>
-          <% end %>
-
-          <div id="likes_heading">Likes</div>
-          <% if @likes && !@likes.empty? %>
-            <% @likes.each do |like| %>
+            <% else %>
               <li>
-                <%= like %>
+                <%= "No new friend requests" %>
               </li>
             <% end %>
-          <% else %>
-            <li>
-              <%= "No new likes" %>
-            </li>
-          <% end %>
-        </ul>
-        </div>
-      </li>
-    <% end %>
-  <ul>
+
+            <div id="likes_heading">Likes</div>
+            <% if @likes && !@likes.empty? %>
+              <% @likes.each do |like| %>
+                <li>
+                  <%= like %>
+                </li>
+              <% end %>
+            <% else %>
+              <li>
+                <%= "No new likes" %>
+              </li>
+            <% end %>
+          </ul>
+          </div>
+        </li>
+
+    </ul>
+  <% end %>
 
   <div class="spacer">
     &nbsp;

@@ -1,7 +1,4 @@
-$(document).on('mouseenter', '.divbutton', function () {
-    $(this).find(":button").show();
-}).on('mouseleave', '.divbutton', function () {
-    $(this).find(":button").hide();
-}).on('click', ':button', function() {
+$(document).on('mouseenter', '.message_box', function () {
+}).on('click', '#i', function() {
     $(this).parent().remove();
 });

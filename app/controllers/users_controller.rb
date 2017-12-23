@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: :index
+  skip_before_action :signed_in?, only: [:create]
   skip_before_action :refresh_notifications, only: [:new, :create]
 
   def new

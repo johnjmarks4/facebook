@@ -95,16 +95,17 @@
 
 #right_menu {
   position: fixed;
-  z-index: 2;
   float: right;
   display: table-row;
   padding: 0;
   margin: 0;
   height: 42px;
   right: 0px;
+  top: 0.5px;
   width: 280px;
   left: 1050px;
   list-style-type: none;
+  z-index: 2;
 }
 
 #right_menu .right_options {
@@ -125,13 +126,12 @@
   left: 74px;
 }
 
-#right_menu img {
-  height: 40px;
-}
-
 #right_menu #gravatar_wrapper {
   position: relative;
+  display: flex !important;
+  flex-flow: row;
   top: 6px;
+  height: 42px;
   margin-right: 10px;
   text-align: center;
   font-weight: bold;
@@ -140,7 +140,16 @@
   color: white;
 }
 
+#right_menu img {
+  height: 40px;
+}
+
+#gravatar_wrapper img {
+  order: 1;
+}
+
 #right_menu #gravatar_wrapper #user_name {
+  order: 2;
   margin-left: 3px;
 }
 
