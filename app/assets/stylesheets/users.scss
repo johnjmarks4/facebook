@@ -1,21 +1,9 @@
-#lower_screen {
-  position: absolute;
-  top: 42px;
-  height: 100%;
-}
-
-#left_wrapper {
+#left_panel {
   position: absolute;
   left: 0;
   margin-left: 75px;
   height: 100%;
   width: 321px;
-}
-
-#user_profile {
-  display: block;
-  height: 500px;
-  width: 100%;
 }
 
 .gravatar {
@@ -29,31 +17,28 @@
 
 #display_name {
   position: relative;
-  display: block;
   top: 30px;
   width: 320px;
   height: 40px;
   font-size: 150%;
 }
 
-#left_profile_options {
-  position: relative;
+#edit_box {
   float: left;
-  display: block;
-  width: 280px;
+  position: relative;
   top: 320px;
+  width: 280px;
   font-size: 16px;
-  /*line-height: 20px;*/
   background-color: white;
   border: thin solid rgb(193, 193, 193);
   border-radius: 5px;
   text-align: left;
 }
 
-#left_profile_options #pencil_image {
+#edit_box #pencil_image {
   float: left;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding: 0 6px;
+  padding-bottom: 3px;
   background-color: rgb(64, 128, 255);
   margin-left: 10px;
   margin-right: 10px;
@@ -62,18 +47,18 @@
   border-radius: 3px;
 }
 
-#left_profile_options #pencil_image img {
+#edit_box #pencil_image img {
   height: 9px;
   width: 9px;
   color: white;
 }
 
-#left_profile_options p {
+#edit_box p {
   margin-top: 15px;
   margin-bottom: 0px;
 }
 
-#left_profile_options ul {
+#edit_box ul {
   float: left;
   margin: 10px;
   padding: 0;
@@ -82,7 +67,7 @@
   border-top: thin solid rgb(193, 193, 193);
 }
 
-#left_profile_options li {
+#edit_box li {
   display: block;
   height: 50px;
   line-height: 50px;
@@ -91,7 +76,7 @@
   border-top: none;
 }
 
-#left_profile_options li a {
+#edit_box li a {
   display: block;
   margin-left: 10px;
   height: 100%;
@@ -100,30 +85,23 @@
   text-decoration: none;
 }
 
-#center_wrapper {
+#center_panel {
   position: absolute;
-  display: block;
-  height: 100%;
-  width: 100%;
   left: 396px;
   margin-top: 68px;
   margin-left: 11px;
-}
-
-#posts_and_wall {
   height: 100%;
   width: 500px;
-  top: 20%;
-  left: 321px;
 }
+
+/*---------- new post box ----------*/
 
 #top_bar {
   display: flex;
   background-color: rgb(246, 247, 249);
   color: gray;
-  border-left: thin solid rgb(193, 193, 193);
-  border-top: thin solid rgb(193, 193, 193);
-  border-right: thin solid rgb(193, 193, 193);
+  border: thin solid rgb(193, 193, 193);
+  border-bottom: none;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   height: 16px;
@@ -131,7 +109,7 @@
   font-size: 10pt;
 }
 
-#bottom_bar .own_posts {
+#bottom_bar .wall_toggle_button {
   background:none!important;
   border:none; 
   padding:0!important;
@@ -142,22 +120,19 @@
   line-height: 23.991px;
 }
 
-#bottom_bar .own_posts:focus {
+#bottom_bar .wall_toggle_button:focus {
   outline: none;
   border: none;
   text-decoration: none;
   -webkit-appearance: none;
 }
 
-#post_field {
-  position: relative;
-  display: block;
+#post_box {
   width: 100%;
   height: 211px;
 }
 
-#post_field textarea {
-  position: relative;
+#post_box form textarea {
   display: block;
   border: thin solid rgb(193, 193, 193);
   width: 410px;
@@ -170,22 +145,20 @@
   color: #888;
 }
 
-#post_field textarea:focus {
+#post_box form textarea:focus {
   outline: none;
   border: thin solid #3b5998;
 }
 
-#post_field:focus {
+#post_box:focus {
   border: medium solid rgb(193, 193, 193);
 }
 
-#post_field #bottom_bar {
-  display: flex;
+#post_box #bottom_bar {
   background-color: rgb(246, 247, 249);
   color: gray;
-  border-left: thin solid rgb(193, 193, 193);
-  border-bottom: thin solid rgb(193, 193, 193);
-  border-right: thin solid rgb(193, 193, 193);
+  border: thin solid rgb(193, 193, 193);
+  border-top: none;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   height: 24px;
@@ -193,9 +166,8 @@
   font-size: 10pt;
 }
 
-#post_field .button {
+#post_box .button {
   position: absolute;
-  display: block;
   width: 60px;
   height: 24px;
   background-color: #4267b2;
@@ -205,7 +177,13 @@
   right: 1.9%;
 }
 
-#center_column {
+#wall {
+  width: 100%;
+}
+
+/*----------- search results -----------*/
+
+#search_results {
   width: 500px;
   margin: 70px auto;
   background-color: white;
@@ -303,11 +281,6 @@ li .gravatar {
   position: relative;
   text-align: center;
   bottom: 28.5px;
-}
-
-#wall {
-  width: 100%;
-  height: 100%;
 }
 
 #bottom_spacer {

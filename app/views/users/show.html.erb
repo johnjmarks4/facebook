@@ -1,73 +1,59 @@
-<div id="lower_screen">
-  <div id="left_wrapper">
-    <div id="user_profile">
-      <%= gravatar_for @profile_owner %>
-      <div id="display_name">
-        <%= @profile_owner_name %>
-      </div>
-
-      <% if @browser.id == @profile_owner.id %>
-        <div id="left_profile_options">
-          <div id="pencil_image">
-            <%= image_tag "pencil" %>
-          </div>
-          <p>Profile Options</p>
-          <ul>
-            <li>
-              <%= link_to "Edit", edit_user_registration_path(@browser.id) %>
-            </li>
-            <li>
-              <%= link_to "Delete", user_path(@browser.id), method: "DELETE", data: { confirm: "Are you sure?" } %>  
-            </li>
-          </ul>
-        </div>
-      <% end %>
-    </div>
+<div id="left_panel">
+  <%= gravatar_for @profile_owner %>
+  <div id="display_name">
+    <%= @profile_owner_name %>
   </div>
 
-  <div id="center_wrapper">
-    <div id="posts_and_wall">
-      <div id="post_field">
-        <div id="top_bar">
-        </div>
-        <%= form_for @post, url: posts_path do |f| %>
-          <%= f.hidden_field :wall_id, value: @profile_owner.id %>
-          <%= f.hidden_field :poster_id, value: @browser.id %>
-          <%= f.hidden_field :poster_name, value: @browser_name %>
-          <%= f.hidden_field :number_of_likes, value: 0 %>
-          <%= f.text_area :text, value: "What's on your mind?", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
-          <div id="bottom_bar">
-            <%= f.submit "Submit", :class => "button" %>
-        <% end %>
-          <% if @profile_owner == current_user %>
-            <%= form_tag user_path(params[:id]) do %>
-              <% if session[:posts_setting] == "timeline" %>
-                <%= hidden_field_tag(:posts_setting, "wall") %>
-                <%= submit_tag "Show your wall", class: :own_posts %>
-              <% elsif session[:posts_setting] == "wall" %>
-                <%= hidden_field_tag(:posts_setting, "timeline") %>
-                <%= submit_tag "Show your timeline", class: :own_posts %>
-              <% end %>
-            <% end %>
-          <% elsif @profile_owner != current_user %>
-            <%= form_tag user_path(params[:id]) do %>
-              <% if session[:posts_setting] == "wall" %>
-                <%= hidden_field_tag(:posts_setting, "users") %>
-                <%= submit_tag "Show just user's posts", class: :own_posts %>
-              <% elsif session[:posts_setting] = "users" %>
-                <%= hidden_field_tag(:posts_setting, "wall") %>
-                <%= submit_tag "Show user's wall", class: :own_posts %>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
+  <% if @browser.id == @profile_owner.id %>
+    <div id="edit_box">
+      <div id="pencil_image">
+        <%= image_tag "pencil" %>
       </div>
+      <p>Profile Options</p>
+      <ul>
+        <li>
+          <%= link_to "Edit", edit_user_registration_path(@browser.id) %>
+        </li>
+        <li>
+          <%= link_to "Delete", user_path(@browser.id), method: "DELETE", data: { confirm: "Are you sure?" } %>  
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
 
-      <div id="wall"> 
-        <%= render "wall_posts" %>
-        <div id="bottom_spacer">
-        </div>
-      </div>
+<div id="center_panel">
+
+  <div id="post_box">
+    <div id="top_bar">
+    </div>
+    <%= form_for @post, url: posts_path do |f| %>
+      <%= f.hidden_field :wall_id, value: @profile_owner.id %>
+      <%= f.hidden_field :poster_id, value: @browser.id %>
+      <%= f.hidden_field :poster_name, value: @browser_name %>
+      <%= f.hidden_field :number_of_likes, value: 0 %>
+      <%= f.text_area :text, value: "What's on your mind?", onfocus: "inputFocus(this)", onblur: "inputBlur(this)" %>
+    <!–– div extends past end of form -->
+    <div id="bottom_bar">
+      <%= f.submit "Submit", :class => "button" %>
+    <% end %>
+
+      <% @profile_owner == current_user ? pronoun = "your" : pronoun = "user's" %>
+      <% toggle_button = set_toggle_button_text %>
+
+      <%= form_tag user_path(params[:id]) do %>
+        <%= hidden_field_tag(:wall_setting, toggle_button) %>
+        <% if toggle_button == "users" %>
+          <%= submit_tag "Show just user's posts", class: :wall_toggle_button %>
+        <% else %>
+          <%= submit_tag "Show #{pronoun} #{toggle_button}", class: :wall_toggle_button %>
+        <% end %>
+      <% end %>
+    </div>
+
+  <div id="wall"> 
+    <%= render "wall_posts" %>
+    <div id="bottom_spacer">
     </div>
   </div>
 </div>

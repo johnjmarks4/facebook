@@ -1,5 +1,5 @@
 <% if @posts.empty? %>
-  <% if session[:posts_setting] == "wall" %>
+  <% if session[:wall_setting] == "wall" %>
     <div id="no_posts_message" class="message_box">
       <div class="arrow_box"></div>
       <button type="button" id="i" onclick="document.body.removeChild(this.parentNode)"><code>&#10006;</code></button>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-  <% elsif session[:posts_setting] == "timeline" %>
+  <% elsif session[:wall_setting] == "timeline" %>
     <% if @profile_owner == current_user %>
       <div id="empty_timeline_message" class="message_box">
         <div class="arrow_box"></div>
@@ -27,7 +27,7 @@
       </div>
     <% end %>
 
-  <% elsif session[:posts_setting] == "users" %>
+  <% elsif session[:wall_setting] == "users" %>
     <div id="user_has_no_posts_message" class="message_box">
       <div class="arrow_box"></div>
       <button type="button" id="i" onclick="document.body.removeChild(this.parentNode)"><code>&#10006;</code></button>

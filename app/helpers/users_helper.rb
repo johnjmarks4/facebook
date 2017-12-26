@@ -21,4 +21,12 @@ module UsersHelper
   def friends?(user)
     current_user.friends.include?(user)
   end
+
+  def set_toggle_button_text
+    if @profile_owner != current_user
+      session[:wall_setting] == "wall" ? "users" : "wall"
+    else
+      session[:wall_setting] == "wall" ? "timeline" : "wall"
+    end
+  end
 end

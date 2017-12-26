@@ -72,7 +72,7 @@ class UsersController < ApplicationController
         redirect_to user_path(@user.id)
       else
         flash[:notice] = "Update failed"
-        render edit_user_registration_path(@user.id)
+        render edit_box_registration_path(@user.id)
       end
     elsif @user.update_attributes(user_params)
       bypass_sign_in @user, scope: :user
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       flash[:notice] = "Update failed"
-      render edit_user_registration_path(@user.id)
+      render edit_box_registration_path(@user.id)
     end
   end
 
@@ -109,14 +109,14 @@ class UsersController < ApplicationController
   end
 
   def toggle_timeline_and_wall
-    if params[:posts_setting]
-      session[:posts_setting] = params[:posts_setting]
+    if params[:wall_setting]
+      session[:wall_setting] = params[:wall_setting]
     elsif @profile_owner == current_user
-      session[:posts_setting] = "timeline"
+      session[:wall_setting] = "timeline"
     else
-      session[:posts_setting] = "wall"
+      session[:wall_setting] = "wall"
     end
 
-    Post.send "#{session[:posts_setting]}_posts", params[:id]
+    Post.send "#{session[:wall_setting]}_posts", params[:id]
   end
 end
