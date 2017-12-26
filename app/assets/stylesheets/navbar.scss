@@ -3,12 +3,11 @@
   display: inline-block;
   background-color: #4267b2;
   height: 42px;
-  width: 1370px;
+  width: 100%;
   top: 0;
   left: 0;
   right: 0;
   color: white;
-  /*min-width: 1250px;*/
   border-bottom: thin solid #29487D;
   font-size: 12.5px;
   z-index: 1;
@@ -17,20 +16,6 @@
 .spacer {
   width: 100%;
   height: 42px;
-}
-
-#notifications_spacer {
-  position: relative;
-  display: inline-block;
-  left: 840px;
-  top: 3px;
-  margin-right: 20px;
-  margin-left: 20px;
-  margin-top: 8px;
-  width: 100px;
-  height: 20px;
-  border-left: medium solid #3b5c9f;
-  border-right: medium solid #3b5c9f;
 }
 
 .login_options {
@@ -53,11 +38,11 @@
 
 #searchbar {
   position: absolute;
+  left: 73px;
+  top: 11.5%;
   display: inline-block;
   width: 414px;
   height: 20px;
-  left: 73px;
-  top: 11.5%;
   padding: 0px;
 }
 
