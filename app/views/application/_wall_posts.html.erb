@@ -42,58 +42,63 @@
 
 <% else %>
   <% @posts.each_with_index do |post, i| %>
-    <div id="friends_post" class="user_post">
-      <%= gravatar_for find_user_by_id(post.poster_id) %>
-      <div class="poster_name">
-        <%= link_to post.poster_name, user_path(post.poster_id) %>
-      </div> <br>
-      <div class="user_text">
-        <%= post.text %><br>
-      </div>
-      <div class="post_likes">
-        <% if post.number_of_likes && post.number_of_likes > 0 %>
-          <%= link_to "#{post.number_of_likes} likes" %>
-          <div id="users_who_liked">
-            <ul>
-              <% find_likers(post.id).each do |name| %>
-                <li><%= name %></li>
-              <% end %>
-            </ul>
-          </div>
+    <div class="full_posts">
+      <%= content_tag :div, class: "user_post", id: "friends_post#{i+1}" do -%>
+        <%= gravatar_for find_user_by_id(post.poster_id) %>
+        <div class="poster_name">
+          <%= link_to post.poster_name, user_path(post.poster_id) %>
+        </div> <br>
+        <div class="user_text">
+          <%= post.text %><br>
+        </div>
+        <div class="post_likes">
+          <% if post.number_of_likes && post.number_of_likes > 0 %>
+            <%= link_to "#{post.number_of_likes} likes" %>
+            <div id="users_who_liked">
+              <ul>
+                <% find_likers(post.id).each do |name| %>
+                  <li><%= name %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+        <%= form_tag posts_like_path do %>
+          <%= hidden_field_tag :user_id, current_user.id %>
+          <%= hidden_field_tag :post_id, post.id %>
+          <%= submit_tag "Like", :id => "like" %>
         <% end %>
-      </div>
-      <%= form_tag posts_like_path do %>
-        <%= hidden_field_tag :user_id, current_user.id %>
-        <%= hidden_field_tag :post_id, post.id %>
-        <%= submit_tag "Like", :id => "like" %>
-      <% end %>
-      <%= button_tag "Comment", id: "addButton#{i+1}", class: "comment_button" %>
-      
-      <%= form_tag new_comment_path do %>
-        <% content_tag :div, class: "comment_box", id: "CommentBoxesGroup#{i+1}" do %>
-          <% concat(hidden_field_tag(:user_id, current_user.id)) %>
-          <% concat(hidden_field_tag(:post_id, post.id)) %> 
+        <%= button_tag "Comment", id: "addButton#{i+1}", class: "comment_button" %>
+        
+        <%= form_tag new_comment_path do %>
+          <% content_tag :div, class: "comment_box", id: "CommentBoxesGroup#{i+1}" do %>
+            <% concat(hidden_field_tag(:user_id, current_user.id)) %>
+            <% concat(hidden_field_tag(:post_id, post.id)) %> 
+          <% end %>
         <% end %>
+      <% end -%>
+
+      <% if !post.comments.empty? %>
+        <div id="post_comments">
+          <% post.comments.each do |comment| %>
+            <div id="user_comment" class="user_post">
+              <%= gravatar_for find_user_by_id(comment.user_id) %>
+              <div id="commenter_name">
+                <%= link_to comment.poster_name, user_path(comment.user_id) %>
+              </div> <br>
+              <div class="user_text">
+                <%= comment.text %>
+              </div>
+              <div class="post_likes">
+                <%= comment.number_of_likes %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
-
-    <% if !post.comments.empty? %>
-      <div id="post_comments">
-        <% post.comments.each do |comment| %>
-          <div id="user_comment" class="user_post">
-            <%= gravatar_for find_user_by_id(comment.user_id) %>
-            <div id="commenter_name">
-              <%= link_to comment.poster_name, user_path(comment.user_id) %>
-            </div> <br>
-            <div class="user_text">
-              <%= comment.text %>
-            </div>
-            <div class="post_likes">
-              <%= comment.number_of_likes %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <script>
+      removePostRadius();
+    </script>
   <% end %>
 <% end %>

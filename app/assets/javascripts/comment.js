@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     var i = this.id[this.id.length -1];
 
-if(counter>2){
+if(counter > 2){
   return false;
 }
 

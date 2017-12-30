@@ -40,7 +40,7 @@ a:hover + #users_who_liked ul {
   padding-left: 0;
 }
 
-#friends_post #like {
+.user_post #like {
   float: left;
   margin: 5px;
   margin-left: 10px;
@@ -54,7 +54,7 @@ a:hover + #users_who_liked ul {
   visibility: visible;
 }
 
-#friends_post .comment_button {
+.user_post .comment_button {
   float: left;
   margin: 5px;
   left: 100px;
@@ -70,7 +70,7 @@ a:hover + #users_who_liked ul {
   visibility: visible;
 }
 
-#friends_post #CommentBoxDiv2 {
+.user_post #CommentBoxDiv2 {
   position: relative;
   padding-top: 4%;
   padding-bottom: 2%;
@@ -82,7 +82,7 @@ a:hover + #users_who_liked ul {
   border-top: thin solid rgb(193, 193, 193);
 }
 
-#friends_post #CommentBoxDiv2 #comment_field {
+.user_post #CommentBoxDiv2 #comment_field {
   position: relative;
   margin-left: 2%;
   margin-right: 20%;
@@ -94,7 +94,7 @@ a:hover + #users_who_liked ul {
   border: thin solid rgb(193, 193, 193);
 }
 
-#friends_post #CommentBoxDiv2 .comment_buttons {
+.user_post #CommentBoxDiv2 .comment_buttons {
   position: relative;
   margin-left: 2%;
   float: left;

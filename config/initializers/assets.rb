@@ -34,3 +34,5 @@ Rails.application.config.assets.precompile += %w( comment.js )
 Rails.application.config.assets.precompile += %w( text_value.js )
 
 Rails.application.config.assets.precompile += %w( message.js )
+
+Rails.application.config.assets.precompile += %w( likes.js )
