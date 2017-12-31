@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   as :user do
     root 'users/registrations#new'
+    get 'about', to: 'static_pages#about'
   end
 
   get 'users/list'
