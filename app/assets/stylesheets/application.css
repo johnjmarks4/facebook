@@ -8,6 +8,11 @@ html, body {
   width: 100%;
 }
 
+input[type="text"] {
+  padding-left: 8px;
+  padding-right: 5px;
+}
+
 .flash {
   position: absolute;
   left: 425px;

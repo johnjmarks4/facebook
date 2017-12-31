@@ -6,12 +6,12 @@ function removePostRadius() {
   posts.forEach(function(post) {
     comments = post.querySelector('#post_comments');
     if (comments != null && 
-        comments.querySelectorAll('#user_comment').length > 1) {
+        comments.querySelectorAll('#user_comment').length > 0) {
       for ( var i in document.styleSheets ) {
         if ( document.styleSheets[i].title && 
              document.styleSheets[i].title == "wall_posts" ) {
 
-          var newRule = "#friends_post" + postNumber + 
+          var newRule = "#friends_post" + postNumber +
                         " {border-bottom-right-radius: 0px; border-bottom-left-radius: 0px}"
 
           document.styleSheets[i].insertRule(newRule);

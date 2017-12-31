@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.poster_name = User.find_name(params[:comment][:user_id])
     if @comment.save
-      redirect_to user_path(current_user.id)
+      redirect_back(fallback_location: user_path(current_user.id))
     else
       flash[:notice] = "Your comment was too long"
     end
