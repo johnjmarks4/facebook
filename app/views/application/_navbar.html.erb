@@ -76,22 +76,27 @@
               </li>
             <% end %>
 
-            <div id="likes_heading">Likes</div>
-            <% if @likes && !@likes.empty? %>
-              <% @likes.each do |like| %>
-                <li>
-                  <%= like %>
-                </li>
-              <% end %>
-            <% else %>
-              <li>
-                <%= "No new likes" %>
-              </li>
-            <% end %>
+            <div id="likes_heading">Likes</div> 
+              <% if @likes && !@likes.empty? %>
+                <% @likes.each_with_index do |like, i| %>
+                  <li>
+                    <div class="likes_block">
+                    <%= @names[i] %>
+                    <p class="likes_statements"> likes your </p>
+                    <%= raw(like) %>
+                    </div>
+                  </li>      
+                <% end %>
+              <% else %>
+                <div class="likes_block">
+                  <li>
+                    <%= "No new likes" %>
+                  </li>
+                </div>
+              <% end %>      
+            </div>    
           </ul>
-          </div>
         </li>
-
     </ul>
   <% end %>
 

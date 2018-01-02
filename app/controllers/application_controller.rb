@@ -16,7 +16,11 @@ class ApplicationController < ActionController::Base
     if current_user
       @friendship = Friendship.new
       @friend_requests = find_friend_requests
-      @likes = find_likes
+      @names, @likes = [], []
+      find_likes.each do |name_and_like|
+        @names << name_and_like[0]
+        @likes << name_and_like[1]
+      end
     end
   end
 
@@ -53,7 +57,7 @@ class ApplicationController < ActionController::Base
       new_likes.map do |like|
         user = User.find(like.user_id)
         name = user.first_name + " " + user.last_name
-        "#{name} liked your #{view_context.link_to 'post', post_path(like.post_id)}".html_safe
+        [name, "#{view_context.link_to 'post', post_path(like.post_id)}"]
       end
     end
   end

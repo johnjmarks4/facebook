@@ -261,3 +261,15 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.likes_statements {
+  display: inline !important;
+}
+
+.likes_block {
+  margin-left: 0 !important;
+}
+
+.likes_block li {
+  display: inline !important;
+}
