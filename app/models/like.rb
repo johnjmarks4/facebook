@@ -6,10 +6,8 @@ class Like < ApplicationRecord
     @post_id = post_id
   end
 
-  def self.refresh_likes(current_user, notification_history)
-    posts = Post.where(poster_id: current_user)
-    likes = posts.map { |post| Like.where(post_id: post.id) }
-    likes.reject! { |l| notification_history.include?(l) || l.empty? }
-    likes
+  def self.refresh_likes(current_user_id, notification_history)
+    posts = Post.where(poster_id: current_user_id)
+    likes = posts.map { |post| Like.where(post_id: post.id) }.flatten
   end
 end

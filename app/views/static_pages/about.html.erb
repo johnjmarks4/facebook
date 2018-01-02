@@ -1,3 +1,59 @@
-<h1>About</h1>
+<h1>A fully-functional social network made with Ruby on Rails</h1>
 
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<div id="left_about">
+  <h2>About</h2>
+
+  <p>This website is a real social network, with a fully-functioning backend and intuitive user inferface modeled on, but not identical to, the design of Facebook.</p>
+
+  <p> [caption] Click on the "All Users" link to start adding friends. 
+      [caption] Write posts for your friends to see, or check your timeline to see friends' posts. 
+      [caption] Click on the dropdown menu to get updates. </p> <!-- replace with three inline pics -->
+
+  <h2>Development Overview</h2>
+
+  <p>My goal was to make Fauxbook as simple as possible while still capturing the experience of a social network. I started by defining the basic data models and their associations. While fairly simple, the resulting diagram helped me explore the problem space and spot possible roadblocks ahead of time. (recreate in block quote).</p>
+
+  <p>I diagrammed models for users, posts, "likes", comments, and friends. Since it was clear that the User model would contain the largest share of application logic, I began by writing a test suite to handle the User. I refrained from adding birth dates or other user info since I wanted to start with only the most important parts of the design (rewrite). Note that I also deliberately refrained from giving the model email or password attributes, since I was already planning on installing the Devise gem to handle authentication. [show validations tests for user]</p>
+
+  <p>The tests for my Friend model forced me to clarify the logic behind the Friend model in my diagram [how?], so I replaced it with a Friendship model that would act as a through-table for a many-to-many relationship between users. Exploring the problem space this way lead me to my first roadblock. [Pic of the friendship test.] </p>
+
+  <p>Because the Friendship model referenced both a user id and[italicized] a friend id, it would create problems when manipulating the database. If my friendship#destroy method only looked for the Friend id, it would lead to situations where a user was friends with another user who wasn't actually friends with them -- a confusing scenario!</p>
+
+  <p>I resolved the problem by creating an "InverseFriends" model that would reverse the ids used by the Friend model. This way, every friendship would reference both users using the same ids. A user who added another user would be referenced as the "user" in the friend model, while they would be referenced as the "friend" in the inverse friend model. Problem solved!</p>
+
+
+  <h2>Authentication with Devise</h2>
+
+  <p>Fauxbook uses the Devise [github link] gem to handle user authentification. The Devise gem was simple to install, though I had to use some work-arounds to customize the sign-process. For example, since I designed my navbar to include a sign-in form whenever the user isn't logged in, Devise intially threw an error whenever the user navigated from the landing page to the 'about' page. This was because Devise uses its own build_resource method when dynamically generating a site's sign-in form. Since the navbar was being rendered in the static_pages controller, it didn't have access to Devise's private build_resource method. I solved the problem by immitating Devise's build_resource method in the static pages controller [codeblock], as well as skipping all of Devise's authentication before actions[name actions].</p>
+
+  <p>Another customization was that I wanted users to land on the registration page (much like the [real Facebook landing page] [link or pic?]), not the sign-in page as is Devise's default. Then, I wanted to include the sign-in form in the navbar. All I had to do was use Devise's 'devise_scope' method and include my custom route in the resulting block.</p>
+
+  <p>For sign-in: [ownline] [as :user do
+    get 'login', to: 'devise/sessions#new'
+  end]
+
+  And for sign-out: [devise_scope :user do
+    delete 'logout', to: 'devise/sessions#destroy'
+  end]</p>
+
+  <p>I also altered the default Devise form to include fields for first and last name, to reflect my User model. [code block] Finally, I altered the head tag of my application.rb to only load the default navbar CSS if a user was logged in. The result was the landing page you just saw. [pic]</p>
+
+  <h2>Displaying posts and comments</h2>
+
+  <p>An essential part of the Facebook experience is commenting on your friends' posts, 
+  so what would Fauxbook be without the same? I placed a call to the User models' find_friends method in the users controllers show method. This retrieves all posts made by the User's friends from the database, then sorts them in reverse chronological order. (check)Using ERB, I iterated through the resulting [rails object], rendering each user object as a partial.</p>
+
+  <p>This created something of a problem when I got to adding comments, since I had to make sure comments were matched to their correct post. Since bare HTML doesn't allow for dynamic segments, I used Rails' content_tag method to create the id of each comment div dynamically. On the comment form itself, I nested the content_tag method within the form, then nested the form fields themselves inside that with the concat method.[pic]</p>
+
+  <h2>Login using the Facebook API</h2>
+
+  <p>Another nifty feature I included was the ability to log in to Fauxbook using the real Facebook. I used the Omniauth gem to accomplish this. First, I registered my site using Facebook Developers, the official API for incorporating Facebook features into your website.</p>
+
+  <p>Though Devise has its own Omniauthable method to validate data[?], I also had to customize my project's config files somewhat to get them to run together. [included Devise initializer in Omniauth files?]</p>
+
+  <p>Finally, in order to run the site in production, Facebook required that I register a privacy policy page with [entity responsible.] [pic]</p>
+
+  <h2>Style Choices</h2>
+
+  <p>(Talk about general philosophy, why the profile page looks the way it does, how you learned from immitating that. Also, get into the javascript you added. In particular, how you smoothed edges on comment boxes is a neat ancedote.) #include popup box message that explains gravatars if user doesn't have one?</p>
+</div>

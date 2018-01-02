@@ -36,3 +36,5 @@ Rails.application.config.assets.precompile += %w( text_value.js )
 Rails.application.config.assets.precompile += %w( message.js )
 
 Rails.application.config.assets.precompile += %w( likes.js )
+
+Rails.application.config.assets.precompile += %w( static_pages.css )
