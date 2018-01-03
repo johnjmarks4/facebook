@@ -41,6 +41,7 @@
   <% end %>
 
 <% else %>
+  <% @posts.inspect %>
   <% @posts.each_with_index do |post, i| %>
     <div class="full_posts">
       <%= content_tag :div, class: "user_post", id: "friends_post#{i+1}" do -%>

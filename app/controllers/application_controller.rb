@@ -53,12 +53,14 @@ class ApplicationController < ActionController::Base
     new_likes = Like.refresh_likes(current_user.id, session[:notifications][:likes])
     session[:notifications][:likes] << new_likes
 
-    if !new_likes.empty?
+    if new_likes && !new_likes.empty?
       new_likes.map do |like|
         user = User.find(like.user_id)
         name = user.first_name + " " + user.last_name
         [name, "#{view_context.link_to 'post', post_path(like.post_id)}"]
       end
+    else
+      []
     end
   end
 end

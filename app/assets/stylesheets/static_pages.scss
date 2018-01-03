@@ -8,34 +8,35 @@ h1 {
 }
 
 h2 {
-  float: left;
   position: relative;
-  display: inline !important;
+  display: block !important;
   top: 30px;
-  width: 600px;
+  width: 657px;
   margin: 40px auto;
-  text-align: left;
   font-size: 28px !important;
-  vertical-align: bottom;
   line-height: 70px;
 }
 
 p {
-  float: left;
   top: 30px;
   display: block !important;
   left: 0 !important;
   right: 0 !important;
-  width: 640px !important;
+  width: 657px !important;
   background-color: white;
-  font-size: 19px !important;
+  font-size: 17px !important;
   border: thin solid rgb(193, 193, 193);
   border-radius: 3px;
   padding: 20px;
+  margin: 0 auto;
   margin-bottom: 10px !important;
 }
 
+#left_about img {
+  margin-top: 30px;
+}
+
 #left_about {
-  position: absolute;
-  left: 100px;
+  width: 658px;
+  margin: 0 auto;
 }
