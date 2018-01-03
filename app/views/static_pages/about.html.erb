@@ -1,59 +1,79 @@
-<h1>A fully-functional social network made with Ruby on Rails</h1>
+<div id="center_about">
+  <h1>A fully-functional social network made with Ruby on Rails</h1>
 
-<div id="left_about">
-  <h2>About</h2>
+  <div id="inner_center_about">
+    <h2>About</h2>
 
-  <p>This website is a real social network, with a fully-functioning backend and intuitive user inferface modeled on, but not identical to, the design of Facebook. Its source code is available on github. [link] [make paragraphs literally into posts?]</p>
+    <p>This website is a real social network, with a fully-functioning backend and intuitive user inferface modeled on, but not identical to, the design of Facebook. Its source code is available on github. [link]</p>
 
-  <p> [caption] Click on the "All Users" link to start adding friends. 
-      [caption] Write posts for your friends to see, or check your timeline to see friends' posts. 
-      [caption] Click on the dropdown menu to get updates. </p> <!-- replace with three inline pics -->
+    <%= image_tag "screen_cap1" %>
 
-  <h2>Development Overview</h2>
+    <h2>Development Overview</h2>
 
-  <p>My goal was to make Fauxbook as simple as possible, while still evoking the experience of a social network. I started by defining the basic data models and their associations. While fairly simple, the resulting diagram helped me explore the problem space and spot possible roadblocks ahead of time. (recreate in block quote).</p>
+    <p>My goal was to make Fauxbook as simple as possible, while still evoking the experience of a social network. I started by defining the basic data models and their associations. While fairly simple, the resulting diagram helped me explore the problem space and spot possible roadblocks ahead of time. [diagram].</p>
 
-  <p>I diagrammed models for users, posts, "likes", comments, and friends. Since it was clear that the User model would contain the largest share of application logic, I began by writing a test suite to handle the User. [show validations tests for user] 
+    <p>I diagrammed models for users, posts, "likes", comments, and friends. Note that I deliberately refrained from giving the User model email or password attributes, since I was already planning on installing the Devise gem to handle authentication.</p>
 
-  Note that I deliberately refrained from giving the User model email or password attributes, since I was already planning on installing the Devise gem to handle authentication.</p>
+    <%= image_tag "screen_cap2" %>
 
-  <p>A problem revealed itself when creating the Friendship model. Because I implemented the model as a through-table for a many-to-many association between users, the foreign key for the adding user would be different from the foreign key for the added user. This could lead to situations where a ...[watch video]</p>
+    <h2>Authentication with Devise</h2>
 
-  <p>The solution was to create an "InverseFriendship" model to mirror the associations of the Friendship model. Here, the adding user would be referenced as the "friend", while they would be the "user" in the friend model.</p>
+    <p>Fauxbook uses the <%= link_to "Devise gem", url: "https://github.com/plataformatec/devise" %> to handle user authentification. Though simple to install, using Devise necessitated some workarounds.</p>
 
-  <h2>Authentication with Devise</h2>
+    <div class="about_spacer"></div>
 
-  <p>Fauxbook uses the Devise [github link] gem to handle user authentification. Though simple to install, using the Devise gem necessitated some workarounds.
+    <p>Devise uses the sign-in template as their landing page. This was less than ideal, since I wanted my root route to be the registration page, matching the real Facebook landing page. Because Devise is designed to accomodate all sorts of resources, I had to specify the resource class in the params. Otherwise Devise would throw an error.</p>
 
-  Devise uses the sign-in template as their landing page. This was less than ideal, since I wanted my root route to be the registration page, matching the [real Facebook landing page] [link or pic?]). Because Devise is designed to accomodate all sorts of resources, I had to specify the resource class in the params. Otherwise Devise would throw an error. [pic]</p>
+    <div class="about_spacer"></div>
 
-  <p>The solution was to use the 'devise_scope' method in my routes file [pic]</p>
+    <p>The solution was to use the 'devise_scope' method in my routes file.</p>
 
-  <p>Capturing the actual Facebook's registration page also required including the sign-in fields in the navbar. This created problems for the same reason as altering the landing page: Devise dynamically generates its sign-in form based on the controller rendering it. This lets it accomodate any resource name, not just a generic "user". [pic]</p>
+    <%= image_tag "screen_cap3" %>
 
-  <p>This meant I had to include my 'about' page as an action of the user controller. An 'about' action doesn't really make sense for a user object, yet using a static_pages would cause the sign-in form to try to dynamically instantiate a 'static_pages' object, with the result being an error. [pic]</p>
+    <p>Capturing the actual Facebook's registration page also required including the sign-in fields in the navbar. This created problems for the same reason as altering the landing page: Devise dynamically generates its sign-in form based on the controller rendering it. This lets it accomodate any resource name, not just a generic "user".</p>
 
-  <p>The solution was to make my static_pages controller inherit from DeviseController, thus allowing it to include Devise's build_resource method. I then included my static_pages controller's about action in the 'devise_for' block in my routes file. [pic of controller]</p>
+    <%= image_tag "screen_cap4" %>
 
-  <p>The final step in getting the landing page right was to tweak my application layout to load an alternative navbar CSS if a user isn't logged in. The result was a landing page closely approximating that of Facebook. [pic of my landing page]</p>
+    <p>This meant I had to include my 'about' page as an action of the user controller. An 'about' action doesn't really make sense for a user object, yet using a static_pages would cause the sign-in form to try to dynamically instantiate a 'static_pages' object, with the result being an error.</p>
 
-  <h2>Displaying posts and comments</h2>
+    <div class="about_spacer"></div>
 
-  <p>The heart of Facebook is the timeline feature, which allows users to see and comment on recent posts by their friends. What would Fauxbook be without something similar?</p> 
+    <p>The solution was to make my static_pages controller inherit from DeviseController, thus allowing it to include Devise's build_resource method. I then included my static_pages controller's about action in the 'devise_for' block in my routes file.</p>
 
-  <p>The first step in creating Fauxbook's own timeline was to write a timeline_posts method for the Post model, which would return an ActiveRecord relation containing all posts made by the user's friends in reverse chronological order. Using ERB, I iterated through the relation, rendering each user object as a partial. [pic of post method]</p>
+    <%= image_tag "screen_cap5" %>
 
-  <p>This created something of a problem when I got to adding comments, since I had to make sure comments were matched to their correct post. Since bare HTML doesn't allow for dynamic segments, I used Rails' content_tag method to create the id of each comment div dynamically. On the comment form itself, I nested the content_tag method within the form, then nested the form fields themselves inside that with the concat method.[pic]</p>
+    <p>The final step in getting the landing page right was to tweak my application layout to load an alternative navbar CSS if a user isn't logged in. The result was a landing page closely approximating that of Facebook.</p>
 
-  <h2>Login using the Facebook API</h2>
+    <%= image_tag "screen_cap6" %>
 
-  <p>Another nifty feature I included was the ability to log in to Fauxbook using the real Facebook. I used the Omniauth gem to accomplish this. First, I registered my site using Facebook Developers, the official API for incorporating Facebook features into your website.</p>
+    <h2>Displaying posts and comments</h2>
 
-  <p>Though Devise has its own Omniauthable method to validate data[?], I also had to customize my project's config files somewhat to get them to run together. [included Devise initializer in Omniauth files?]</p>
+    <p>The heart of Facebook is the timeline feature, which allows users to see and comment on recent posts by their friends. What would Fauxbook be without something similar?</p>
 
-  <p>Finally, in order to run the site in production, Facebook required that I register a privacy policy page with [entity responsible.] [pic]</p>
+    <div class="about_spacer"></div>
 
-  <h2>Style Choices</h2>
+    <p>The first step in creating Fauxbook's own timeline was to write a timeline_posts method for the Post model, which would return an ActiveRecord relation containing all posts made by the user's friends in reverse chronological order. Using ERB, I iterated through the relation, rendering each user object as a partial.</p>
 
-  <p>(Talk about general philosophy, why the profile page looks the way it does, how you learned from immitating that. Also, get into the javascript you added. In particular, how you smoothed edges on comment boxes is a neat ancedote.) #include popup box message that explains gravatars if user doesn't have one?</p>
+    <div class="about_spacer"></div>
+
+    <p>This created something of a problem when I got to adding comments, since I had to make sure comments were matched to their correct post. Since bare HTML doesn't allow for dynamic segments, I used Rails' content_tag method to create the id of each comment div dynamically. On the comment form itself, I nested the content_tag method within the form, then nested the form fields themselves inside that with the concat method.</p>
+
+    <%= image_tag "screen_cap7" %>
+
+    <h2>Login using the Facebook API</h2>
+
+    <p>Another nifty feature I included was the ability to log in to Fauxbook using the real Facebook. I used the Omniauth gem to accomplish this. First, I registered my site using Facebook Developers, the official API for incorporating Facebook features into your website.</p>
+
+    <div class="about_spacer"></div>
+
+    <p>Though Devise has its own Omniauthable method to validate data[?], I also had to customize my project's config files somewhat to get them to run together. [included Devise initializer in Omniauth files?]</p>
+
+    <div class="about_spacer"></div>
+
+    <p>Finally, in order to run the site in production, Facebook required that I register a privacy policy page with [entity responsible.] [pic]</p>
+
+    <h2>Style Choices</h2>
+
+    <p>(Talk about general philosophy, why the profile page looks the way it does, how you learned from immitating that. Also, get into the javascript you added. In particular, how you smoothed edges on comment boxes is a neat ancedote.) #include popup box message that explains gravatars if user doesn't have one?</p>
+  </div>
 </div>
