@@ -4,7 +4,7 @@
   <div id="inner_center_about">
     <h2>About</h2>
 
-    <p>This website is a real social network, with a fully-functioning backend and intuitive user inferface modeled on, but not identical to, the design of Facebook. Its source code is available on github. [link]</p>
+    <p>This website is a real social network, with a fully-functioning backend and intuitive user interface modeled on, but not identical to, the design of Facebook. Its source code is available on <%= link_to "Github", url: "https://github.com/johnjmarks4/facebook" %>.</p>
 
     <%= image_tag "screen_cap1" %>
 
@@ -12,17 +12,19 @@
 
     <p>My goal was to make Fauxbook as simple as possible, while still evoking the experience of a social network. I started by defining the basic data models and their associations. While fairly simple, the resulting diagram helped me explore the problem space and spot possible roadblocks ahead of time. [diagram].</p>
 
+    <div class="about_spacer"></div>
+
     <p>I diagrammed models for users, posts, "likes", comments, and friends. Note that I deliberately refrained from giving the User model email or password attributes, since I was already planning on installing the Devise gem to handle authentication.</p>
 
     <%= image_tag "screen_cap2" %>
 
     <h2>Authentication with Devise</h2>
 
-    <p>Fauxbook uses the <%= link_to "Devise gem", url: "https://github.com/plataformatec/devise" %> to handle user authentification. Though simple to install, using Devise necessitated some workarounds.</p>
+    <p>Fauxbook uses the <%= link_to "Devise gem", url: "https://github.com/plataformatec/devise" %> to handle user authentication. Though simple to install, using Devise necessitated some workarounds.</p>
 
     <div class="about_spacer"></div>
 
-    <p>Devise uses the sign-in template as their landing page. This was less than ideal, since I wanted my root route to be the registration page, matching the real Facebook landing page. Because Devise is designed to accomodate all sorts of resources, I had to specify the resource class in the params. Otherwise Devise would throw an error.</p>
+    <p>Devise uses the sign-in template as their landing page. This was less than ideal, since I wanted my root route to be the registration page, matching the real Facebook landing page. Because Devise is designed to accommodate all sorts of resources, I had to specify the resource class in the params. Otherwise Devise would throw an error.</p>
 
     <div class="about_spacer"></div>
 
@@ -30,7 +32,7 @@
 
     <%= image_tag "screen_cap3" %>
 
-    <p>Capturing the actual Facebook's registration page also required including the sign-in fields in the navbar. This created problems for the same reason as altering the landing page: Devise dynamically generates its sign-in form based on the controller rendering it. This lets it accomodate any resource name, not just a generic "user".</p>
+    <p>Capturing the actual Facebook's registration page also required including the sign-in fields in the navbar. This created problems for the same reason as altering the landing page: Devise dynamically generates its sign-in form based on the controller rendering it. This lets it accommodate any resource name, not just a generic "user".</p>
 
     <%= image_tag "screen_cap4" %>
 
@@ -62,18 +64,13 @@
 
     <h2>Login using the Facebook API</h2>
 
-    <p>Another nifty feature I included was the ability to log in to Fauxbook using the real Facebook. I used the Omniauth gem to accomplish this. First, I registered my site using Facebook Developers, the official API for incorporating Facebook features into your website.</p>
+    <p>Another nifty feature I included was the ability to log in to Fauxbook using the real Facebook's developers page.</p>
 
     <div class="about_spacer"></div>
 
-    <p>Though Devise has its own Omniauthable method to validate data[?], I also had to customize my project's config files somewhat to get them to run together. [included Devise initializer in Omniauth files?]</p>
+    <p>The <%= link_to "Omniauth gem", url: "https://github.com/omniauth/omniauth" %> greatly simplified the process of working with Facebook's API. What's more, Devise's Omniauthable method makes integrating Omniauth into the authentication process easy. The only additional code I needed to write was a method that customized the flash message for a successful sign-in and redirected to the after-login page I customized.</p>
 
-    <div class="about_spacer"></div>
-
-    <p>Finally, in order to run the site in production, Facebook required that I register a privacy policy page with [entity responsible.] [pic]</p>
-
-    <h2>Style Choices</h2>
-
-    <p>(Talk about general philosophy, why the profile page looks the way it does, how you learned from immitating that. Also, get into the javascript you added. In particular, how you smoothed edges on comment boxes is a neat ancedote.) #include popup box message that explains gravatars if user doesn't have one?</p>
+    <%= image_tag "screen_cap8" %>
   </div>
+  <div class="about_spacer" id="about_end_spacer"></div>
 </div>
