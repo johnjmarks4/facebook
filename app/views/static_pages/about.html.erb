@@ -10,9 +10,9 @@
 
     <h2>Development Overview</h2>
 
-    <p>My goal was to make Fauxbook as simple as possible, while still evoking the experience of a social network. I started by defining the basic data models and their associations. While fairly simple, the resulting diagram helped me explore the problem space and spot possible roadblocks ahead of time. [diagram].</p>
+    <p>My goal was to make Fauxbook as simple as possible, while still evoking the experience of a social network. I started by defining the basic data models and their associations. While fairly simple, the resulting diagram helped me explore the problem space and spot possible roadblocks ahead of time.</p>
 
-    <div class="about_spacer"></div>
+    <%= render "diagram" %>
 
     <p>I diagrammed models for users, posts, "likes", comments, and friends. Note that I deliberately refrained from giving the User model email or password attributes, since I was already planning on installing the Devise gem to handle authentication.</p>
 
