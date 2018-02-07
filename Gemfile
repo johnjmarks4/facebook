@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'newrelic_rpm'
 gem 'bcrypt', platforms: :ruby
 gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 #gem 'oauth2'
