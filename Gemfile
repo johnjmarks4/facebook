@@ -1,11 +1,12 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org/'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'newrelic_rpm'
+gem 'sprockets', '~> 3.7.2'
+#gem 'newrelic_rpm'
 gem 'bcrypt', platforms: :ruby
 gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 #gem 'oauth2'
